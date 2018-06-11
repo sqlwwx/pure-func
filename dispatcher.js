@@ -12,4 +12,9 @@ const toNum = (str) => {
   return num
 }
 
-exports.dispatch = (uid, arr) => arr[toNum(uid) % arr.length]
+exports.dispatch = (uid, arr) => {
+  if (typeof arr === 'number') {
+    return toNum(uid) % arr
+  }
+  return arr[toNum(uid) % arr.length]
+}
