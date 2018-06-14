@@ -1,1 +1,4 @@
 **/*.test.js
+coverage/
+makefile
+.eslintrc.js
