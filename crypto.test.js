@@ -1,6 +1,7 @@
 const { hash, sortObject, generateMac } = require('./crypto')
 const getmac = require('getmac')
 
+/* eslint-env jest */
 describe('crypto', () => {
   describe('sortObject', () => {
     it('simple obj', async () => {

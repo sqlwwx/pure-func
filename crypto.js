@@ -15,7 +15,6 @@ const sortObject = (o) => {
   if (!o || typeof o !== 'object') {
     return o
   }
-  const values = []
   const keys = Object.keys(o)
   return keys.sort().map(
     key => [key, sortObject(o[key])]
@@ -56,3 +55,5 @@ function generateMac (usercode = (Math.random() + '').split('.')[1]) {
 exports.sortObject = sortObject
 exports.hash = hash
 exports.generateMac = generateMac
+exports.hmac = hmac
+exports.base64 = base64

@@ -1,5 +1,5 @@
 const toNum = (str) => {
-  if (typeof str === 'number') { return str}
+  if (typeof str === 'number') { return str }
   let num = Number(str)
   if (Number.isNaN(num)) {
     num = 0
