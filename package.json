@@ -8,6 +8,10 @@
   },
   "author": "sqlwwx <wwx_2012@live.com> (http://wiki.lab.wuweixing.com)",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sqlwwx/pure-func/issues"
+  },
+  "homepage": "https://github.com/sqlwwx/pure-func#readme",
   "devDependencies": {
     "eslint": "^4.19.1",
     "eslint-config-standard": "^11.0.0",
