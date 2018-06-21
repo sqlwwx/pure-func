@@ -24,6 +24,7 @@ describe('dispatch', () => {
       expect(dispatch('c', 2)).toEqual(1)
       expect(dispatch('d', 2)).toEqual(0)
       expect(dispatch(1, 2)).toEqual(1)
+      expect(dispatch('1', 2)).toEqual(1)
       expect(dispatch(2, 2)).toEqual(0)
       expect(dispatch(3, 2)).toEqual(1)
       expect(dispatch(4, 2)).toEqual(0)
