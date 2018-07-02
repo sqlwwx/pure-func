@@ -1,6 +1,6 @@
 {
   "name": "pure-func",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -26,5 +26,11 @@
   },
   "dependencies": {
     "emoji-regex": "^7.0.0"
+  },
+  "optionalDependencies": {
+    "file-box": "^0.8.22",
+    "jimp": "^0.2.28",
+    "jsqr": "^1.1.0",
+    "qrcode": "^1.2.0"
   }
 }
