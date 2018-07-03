@@ -26,7 +26,6 @@ exports.getOssLiteImgBuffer = async (url, size) => {
   return exports.getImageBuffer(
     await exports.getOssLiteImgUrl(url, size)
   )
-  return Buffer.from(data, 'binary')
 }
 
 exports.getOssLiteImgBase64 = async (url, size) => {

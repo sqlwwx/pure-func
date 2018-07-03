@@ -15,6 +15,7 @@ describe('image', () => {
   it('getImageBase64', async () => {
     const liteImgUrl = await getOssLiteImgUrl(url, 2000)
     const base64 = await getImageBase64(liteImgUrl)
+    expect(Buffer.from(base64, 'base64').length).toBeLessThan(2000)
   })
   it('getOssLiteImgBase64', async () => {
     const base64 = await getOssLiteImgBase64(url, 2000)

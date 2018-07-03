@@ -7,7 +7,7 @@ const QRCODE_IMAGE_BASE64 = [
   'V7BDzuzAiZ9eqn5IWjfWXHf7VCO5tPAM6U9AjSRideyHFn4FiuvDqV5CM9rZXuF2pZmIAjZy',
   'x4S0MDdBxEmu3TrliPf7iglPvuLlRydfU3P70UweCSK+ZYK0mUg1O4AVcv0/8itGkC7SdiTH',
   '0+Mz19oJZ4NkhhSPbIhQkQGI8u1HJzmzs7p7pzNAru2pJb6z8ykkQ0P/pheK6vjurjf7+wAA',
-  'AABJRU5ErkJggg==',
+  'AABJRU5ErkJggg=='
 ].join('')
 
 /* eslint-env jest */
