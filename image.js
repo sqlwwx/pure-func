@@ -3,8 +3,12 @@ const axios = require('axios')
 const ossInfoPath = '?x-oss-process=image/info'
 
 exports.getImageBase64 = async (url) => {
+  return (await exports.getImageBuffer(url)).toString('base64')
+}
+
+exports.getImageBuffer = async (url) => {
   const { data } = await axios(url, { responseType: 'arraybuffer' })
-  return Buffer.from(data, 'binary').toString('base64')
+  return Buffer.from(data, 'binary')
 }
 
 exports.getOssLiteImgUrl = async (url, size = 25000) => {
@@ -16,6 +20,13 @@ exports.getOssLiteImgUrl = async (url, size = 25000) => {
   } else {
     return `${url}?x-oss-process=image/resize,w_${Number(data.ImageWidth.value) > 600 ? 600 : data.ImageWidth.value}/quality,Q_90`
   }
+}
+
+exports.getOssLiteImgBuffer = async (url, size) => {
+  return exports.getImageBuffer(
+    await exports.getOssLiteImgUrl(url, size)
+  )
+  return Buffer.from(data, 'binary')
 }
 
 exports.getOssLiteImgBase64 = async (url, size) => {
