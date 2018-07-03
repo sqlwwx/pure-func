@@ -23,7 +23,9 @@ describe('image', () => {
     expect(buf.length).toBeLessThan(2000)
   })
   it('getOssLiteImgBuffer', async () => {
-    const buf = await getOssLiteImgBuffer(url, 2000)
+    let buf = await getOssLiteImgBuffer(url, 2000)
     expect(buf.length).toBeLessThan(2000)
+    buf = await getOssLiteImgBuffer(url, 310000)
+    expect(buf.length).toBeLessThan(250000)
   })
 })
