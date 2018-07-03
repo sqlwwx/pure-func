@@ -12,7 +12,7 @@ exports.getImageBuffer = async (url) => {
 }
 
 exports.getOssLiteImgUrl = async (url, size = 25000) => {
-  if (url.endsWith('.git')) { return url }
+  if (url.endsWith('.gif')) { return url }
   const { data } = await axios.get(url + ossInfoPath)
   const fileSize = Number(data.FileSize.value)
   if (fileSize > size) {
