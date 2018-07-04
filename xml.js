@@ -10,3 +10,15 @@ exports.parse = async (xmlData, options = {}) => {
     }, options))
   }
 }
+
+let _parser
+
+exports.toXml = (jsonOrObj, options) => {
+  let parser
+  if (!options) {
+    parser = _parser = _parser || new fastXmlParser.j2xParser()
+  } else {
+    parser = new fastXmlParser.Parser(options)
+  }
+  return parser.parse(jsonOrObj)
+}

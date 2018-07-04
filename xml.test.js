@@ -1,4 +1,4 @@
-const { parse } = require('./xml')
+const { parse, toXml } = require('./xml')
 
 /* eslint-env jest */
 describe('parseWxMsgContent', () => {
@@ -10,5 +10,10 @@ describe('parseWxMsgContent', () => {
     contentJson = await parse(content)
     expect(contentJson).toHaveProperty('msg.@_encryptusername')
     expect(contentJson).toHaveProperty('msg.@_ticket')
+  })
+  it('toXml', () => {
+    expect(toXml({ a: 1 })).toEqual('<a>1</a>')
+    expect(toXml({ a: 1, b: 2 })).toEqual('<a>1</a><b>2</b>')
+    expect(toXml({ a: 1, b: { c: 2 } })).toEqual('<a>1</a><b><c>2</c></b>')
   })
 })
