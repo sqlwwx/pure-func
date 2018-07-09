@@ -1,5 +1,18 @@
 const { sleepRandom, doWhile, sleep } = require('./promise')
 
+class Test {
+  constructor () {
+    this.sendCount = 0
+  }
+  async send (data) {
+    this.sendCount++
+    await sleep((this.sendCount - 1) * 1000)
+    console.log('send:' + data, Date.now())
+    await sleep()
+    this.sendCount--
+  }
+}
+
 /* eslint-env jest */
 describe('promise', () => {
   it('sleep', async () => {
@@ -18,9 +31,16 @@ describe('promise', () => {
   })
   it('doWhile', async () => {
     let i = 0
+    let limit = 10
     await doWhile(async () => {
       return Promise.resolve(++i)
-    }, data => data < 10)
-    expect(i).toEqual(10)
+    }, data => data < limit)
+    expect(i).toEqual(limit)
+  })
+  it('test', async () => {
+    const test = new Test()
+    await Promise.all([1, 2, 3].map((i) => {
+      return test.send(i)
+    }))
   })
 })
