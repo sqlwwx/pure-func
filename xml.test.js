@@ -11,9 +11,12 @@ describe('parseWxMsgContent', () => {
     expect(contentJson).toHaveProperty('msg.@_encryptusername')
     expect(contentJson).toHaveProperty('msg.@_ticket')
   })
-  it('toXml', () => {
+  it('toXml', async () => {
     expect(toXml({ a: 1 })).toEqual('<a>1</a>')
     expect(toXml({ a: 1, b: 2 })).toEqual('<a>1</a><b>2</b>')
     expect(toXml({ a: 1, b: { c: 2 } })).toEqual('<a>1</a><b><c>2</c></b>')
+    let content = '<msg><appmsg appid="" sdkver=""><title><![CDATA[邀请你加入群聊]]></title><des><![CDATA["孩子系"邀请你加入群聊，进入可查看详情。]]></des><action>view</action><type>5</type><showtype>0</showtype><content></content><url><![CDATA[http://support.weixin.qq.com/cgi-bin/mmsupport-bin/addchatroombyinvite?ticket=AQMf7Q5hpiw%2B5DP7N5wNig%3D%3D]]></url><thumburl><![CDATA[http://weixin.qq.com/cgi-bin/getheadimg?username=b3bac27e215f2f754dfd7cfc7740ea804fb85712599c8209e256cab4ad7bcb28]]></thumburl><lowurl></lowurl><appattach><totallen>0</totallen><attachid></attachid><fileext></fileext></appattach><extinfo></extinfo></appmsg><appinfo><version></version><appname></appname></appinfo></msg>'
+    let contentJson = await parse(content)
+    expect(toXml(contentJson)).toEqual(content)
   })
 })
