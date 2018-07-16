@@ -1,15 +1,10 @@
-const axios = require('axios')
+const axios = require('./axios')
 
 const ossInfoPath = '?x-oss-process=image/info'
 
-exports.getImageBase64 = async (url) => {
-  return (await exports.getImageBuffer(url)).toString('base64')
-}
+exports.getImageBase64 = url => axios.loadBase64(url)
 
-exports.getImageBuffer = async (url) => {
-  const { data } = await axios(url, { responseType: 'arraybuffer' })
-  return Buffer.from(data, 'binary')
-}
+exports.getImageBuffer = url => axios.loadBuffer(url)
 
 exports.getOssLiteImgUrl = async (url, size = 25000) => {
   if (url.endsWith('.gif')) { return url }

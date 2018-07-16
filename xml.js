@@ -1,5 +1,6 @@
 const fastXmlParser = require('fast-xml-parser')
 const he = require('he')
+const J2xParser = fastXmlParser.j2xParser
 
 exports.parse = async (xmlData, options = {}) => {
   if (fastXmlParser.validate(xmlData) === true) {
@@ -11,12 +12,12 @@ exports.parse = async (xmlData, options = {}) => {
   }
 }
 
-let _parser
+let defaultParser
 
 exports.toXml = (jsonOrObj, options) => {
   let parser
   if (!options) {
-    parser = _parser = _parser || new fastXmlParser.j2xParser()
+    parser = defaultParser = defaultParser || new J2xParser()
   } else {
     parser = new fastXmlParser.Parser(options)
   }
