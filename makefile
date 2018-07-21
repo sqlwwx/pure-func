@@ -19,4 +19,7 @@ test: lint
 dev:
 	$(JEST) -o --watch --runInBand --forceExit $(DIR)
 
-.PHONY: test lint dev build watch
+publish: build
+	npm publish
+
+.PHONY: test lint dev build watch publish
