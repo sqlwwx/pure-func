@@ -51,4 +51,3 @@ export function generateMac (usercode = (Math.random() + '').split('.')[1]) {
   ret = ret.substring(0, 17)
   return ret
 }
-

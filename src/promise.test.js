@@ -27,7 +27,7 @@ describe('promise', () => {
     await sleepRandom(200, 1000)
     const time = Date.now() - start
     expect(time).toBeGreaterThanOrEqual(200)
-    expect(time).toBeLessThan(1000)
+    expect(time).toBeLessThan(1020)
   })
   it('doWhile', async () => {
     let i = 0

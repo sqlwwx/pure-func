@@ -7,7 +7,7 @@ DIR ?= src
 build:
 	$(BABEL) src -d . --copy-files
 
-buildWatch:
+watch:
 	$(BABEL) -w src -d . --copy-files
 
 lint:
@@ -19,4 +19,4 @@ test: lint
 dev:
 	$(JEST) -o --watch --runInBand --forceExit $(DIR)
 
-.PHONY: test lint dev build buildWatch
+.PHONY: test lint dev build watch

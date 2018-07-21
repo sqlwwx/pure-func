@@ -23,5 +23,8 @@ describe('qrcode', () => {
     expect(qrcodeValue).toEqual('hello, world!')
     qrcodeValue = await decodeFromBase64(qrcodeBase64.split(',')[1])
     expect(qrcodeValue).toEqual('wwx')
+    expect(
+      decodeFromBase64('iVBORw0KGgoAAAANSUhEUgAAAMgAAADIAQMAAACXljzdAAAABlBMVEX')
+    ).rejects.toHaveProperty('code', 'InvalidQrcodeBuffer')
   })
 })
