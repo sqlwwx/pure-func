@@ -1,6 +1,6 @@
 const crypto = require('crypto')
 
-const hash = (s = '', method = 'md5', format = 'hex') => {
+export const hash = (s = '', method = 'md5', format = 'hex') => {
   const sum = crypto.createHash(method)
   const isBuffer = Buffer.isBuffer(s)
   if (!isBuffer && typeof s === 'object') {
@@ -10,7 +10,7 @@ const hash = (s = '', method = 'md5', format = 'hex') => {
   return sum.digest(format)
 }
 
-const sortObject = (o) => {
+export const sortObject = (o) => {
   if (Array.isArray(o)) { return o.sort() }
   if (!o || typeof o !== 'object') {
     return o
@@ -21,7 +21,7 @@ const sortObject = (o) => {
   )
 }
 
-function hmac (key, s, algorithm = 'sha256', format = 'hex') {
+export function hmac (key, s, algorithm = 'sha256', format = 'hex') {
   const hmac = crypto.createHmac(algorithm, key)
   const isBuffer = Buffer.isBuffer(s)
   if (!isBuffer && typeof s === 'object') {
@@ -31,11 +31,11 @@ function hmac (key, s, algorithm = 'sha256', format = 'hex') {
   return hmac.digest(format)
 }
 
-function base64 (str) {
+export function base64 (str) {
   return Buffer.from(str).toString('base64')
 }
 
-function generateMac (usercode = (Math.random() + '').split('.')[1]) {
+export function generateMac (usercode = (Math.random() + '').split('.')[1]) {
   let ret = ''
   usercode = usercode.split('-').join('')
   if (usercode.length < 12) {
@@ -52,8 +52,3 @@ function generateMac (usercode = (Math.random() + '').split('.')[1]) {
   return ret
 }
 
-exports.sortObject = sortObject
-exports.hash = hash
-exports.generateMac = generateMac
-exports.hmac = hmac
-exports.base64 = base64

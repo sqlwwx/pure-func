@@ -7,6 +7,9 @@ DIR ?= src
 build:
 	$(BABEL) src -d . --copy-files
 
+buildWatch:
+	$(BABEL) -w src -d . --copy-files
+
 lint:
 	$(LINT) --format 'node_modules/eslint-friendly-formatter' --fix src/*.js
 
@@ -16,4 +19,4 @@ test: lint
 dev:
 	$(JEST) -o --watch --runInBand --forceExit $(DIR)
 
-.PHONY: test lint dev build
+.PHONY: test lint dev build buildWatch

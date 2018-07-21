@@ -2,11 +2,11 @@ const axios = require('./axios')
 
 const ossInfoPath = '?x-oss-process=image/info'
 
-exports.getImageBase64 = url => axios.loadBase64(url)
+export const getImageBase64 = url => axios.loadBase64(url)
 
-exports.getImageBuffer = url => axios.loadBuffer(url)
+export const getImageBuffer = url => axios.loadBuffer(url)
 
-exports.getOssLiteImgUrl = async (url, size = 25000) => {
+export const getOssLiteImgUrl = async (url, size = 25000) => {
   if (url.endsWith('.gif')) { return url }
   const { data } = await axios.get(url + ossInfoPath)
   const fileSize = Number(data.FileSize.value)
@@ -17,14 +17,14 @@ exports.getOssLiteImgUrl = async (url, size = 25000) => {
   }
 }
 
-exports.getOssLiteImgBuffer = async (url, size) => {
-  return exports.getImageBuffer(
-    await exports.getOssLiteImgUrl(url, size)
+export const getOssLiteImgBuffer = async (url, size) => {
+  return getImageBuffer(
+    await getOssLiteImgUrl(url, size)
   )
 }
 
-exports.getOssLiteImgBase64 = async (url, size) => {
-  return exports.getImageBase64(
-    await exports.getOssLiteImgUrl(url, size)
+export const getOssLiteImgBase64 = async (url, size) => {
+  return getImageBase64(
+    await getOssLiteImgUrl(url, size)
   )
 }

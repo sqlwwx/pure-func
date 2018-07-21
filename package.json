@@ -7,25 +7,6 @@
     "build": "babel src -d . --copy-files",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "babel": {
-    "presets": [
-      [
-        "env",
-        {
-          "targets": {
-            "node": "current"
-          },
-          "useBuiltIns": true
-        }
-      ]
-    ],
-    "plugins": [
-      "transform-export-extensions",
-      "syntax-object-rest-spread",
-      "transform-decorators-legacy",
-      "transform-class-properties"
-    ]
-  },
   "author": "sqlwwx <wwx_2012@live.com> (http://wiki.lab.wuweixing.com)",
   "license": "MIT",
   "bugs": {

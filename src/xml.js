@@ -2,7 +2,7 @@ const fastXmlParser = require('fast-xml-parser')
 const he = require('he')
 const J2xParser = fastXmlParser.j2xParser
 
-exports.parse = async (xmlData, options = {}) => {
+export const parse = async (xmlData, options = {}) => {
   if (fastXmlParser.validate(xmlData) === true) {
     return fastXmlParser.parse(xmlData, Object.assign({
       ignoreAttributes: false,
@@ -15,7 +15,7 @@ exports.parse = async (xmlData, options = {}) => {
 
 let defaultParser
 
-exports.toXml = (jsonOrObj, options) => {
+export const toXml = (jsonOrObj, options) => {
   let parser
   if (!options) {
     parser = defaultParser = defaultParser || new J2xParser({

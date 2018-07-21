@@ -1,4 +1,4 @@
-const toNum = (str) => {
+export const toNum = (str) => {
   if (typeof str === 'number') { return str }
   let num = Number(str)
   if (Number.isNaN(num)) {
@@ -12,7 +12,7 @@ const toNum = (str) => {
   return num
 }
 
-exports.dispatch = (uid, arr) => {
+export const dispatch = (uid, arr) => {
   if (typeof arr === 'number') {
     return toNum(uid) % arr
   }
