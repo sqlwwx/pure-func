@@ -13,6 +13,8 @@ axios.defaults.adapter = adapterHttp
 const imgUrl = 'https://ghost-wwx.oss-cn-hangzhou.aliyuncs.com/ghost/wechatimg256.jpeg'
 const gifUrl = 'https://ghost-wwx.oss-cn-hangzhou.aliyuncs.com/ghost/x.gif'
 
+jest.setTimeout(1000 * 30)
+
 /* eslint-env jest */
 describe('image', () => {
   it('getOssImageInfo', async () => {
