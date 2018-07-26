@@ -4,6 +4,10 @@ BABEL = $(PWD)/node_modules/.bin/babel
 
 DIR ?= src
 
+install:
+	yarn install
+	yarn add axios emoji-regex fast-xml-parser file-box he jimp jsqr qrcode --peer
+
 build:
 	$(BABEL) src -d . --copy-files
 
@@ -22,4 +26,4 @@ dev:
 publish: build
 	npm publish
 
-.PHONY: test lint dev build watch publish
+.PHONY: test lint dev build watch publish install

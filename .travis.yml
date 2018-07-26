@@ -4,7 +4,7 @@ node_js:
   - 8
 cache: yarn
 install:
-  - yarn install
+  - make install
 script:
   - make test
 after_success:

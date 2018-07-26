@@ -31,16 +31,14 @@
     "getmac": "^1.4.3",
     "jest": "^23.2.0"
   },
-  "dependencies": {
-    "emoji-regex": "^7.0.0"
-  },
-  "optionalDependencies": {
+  "peerDependencies": {
     "axios": "^0.18.0",
-    "fast-xml-parser": "^3.11.1",
+    "emoji-regex": "^7.0.0",
+    "fast-xml-parser": "^3.11.2",
     "file-box": "^0.8.22",
     "he": "^1.1.1",
     "jimp": "^0.2.28",
-    "jsqr": "^1.1.0",
+    "jsqr": "^1.1.1",
     "qrcode": "^1.2.0"
   }
 }

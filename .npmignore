@@ -3,3 +3,4 @@ coverage/
 src/
 makefile
 .eslintrc.js
+yarn.lock
