@@ -8,14 +8,14 @@ export const getImageBuffer = url => axios.loadBuffer(url)
 
 export const getOssImageInfo = url => axios.get(url + ossInfoPath).then(ret => ret.data)
 
-export const getOssLiteImgUrl = async (url, size = 25000) => {
+export const getOssLiteImgUrl = async (url, size = 25000, maxWidth = 600) => {
   const data = await getOssImageInfo(url)
   const fileSize = Number(data.FileSize.value)
   if (fileSize > size) {
     const width = Math.floor(Number(data.ImageWidth.value) / Math.sqrt((fileSize / size)))
     return `${url}?x-oss-process=image/resize,w_${width}/quality,Q_90`
   } else {
-    return `${url}?x-oss-process=image/resize,w_${Number(data.ImageWidth.value) > 600 ? 600 : data.ImageWidth.value}/quality,Q_90`
+    return `${url}?x-oss-process=image/resize,w_${Number(data.ImageWidth.value) > maxWidth ? maxWidth : data.ImageWidth.value}/quality,Q_90`
   }
 }
 
