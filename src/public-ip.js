@@ -6,7 +6,7 @@ axios.defaults.adapter = adapterHttp
 let defaultIpServer = 'http://whatismyip.akamai.com/'
 let v4ip
 
-export const v4 = async (url, reload) => {
+export const v4 = async ({ reload, url } = {}) => {
   if (!v4ip || reload) {
     v4ip = await axios.get(url || defaultIpServer)
       .then(ret => ret.data)
