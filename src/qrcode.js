@@ -11,17 +11,15 @@ export const fileBoxToQrcodeValue = async (file) => {
         return reject(err)
       }
       const qrCodeImageArray = new Uint8ClampedArray(image.bitmap.data.buffer)
-      try {
-        resolve(
-          jsQR(
-            qrCodeImageArray,
-            image.bitmap.width,
-            image.bitmap.height
-          ).data
-        )
-      } catch (e) {
-        e.code = 'DecodeQrcodeFail'
-        reject(e)
+      const qrcode = jsQR(
+        qrCodeImageArray,
+        image.bitmap.width,
+        image.bitmap.height
+      )
+      if (qrcode) {
+        resolve(qrcode.data)
+      } else {
+        reject(new Error('DecodeQrcodeFail'))
       }
     })
   })
@@ -33,10 +31,5 @@ export const decodeFromBase64 = (base64, fileName) => {
 }
 
 export const encode = (qrcodeValue) => {
-  return new Promise((resolve, reject) => {
-    QRCode.toDataURL(qrcodeValue, (err, data) => {
-      if (err) { return reject(err) }
-      resolve(data)
-    })
-  })
+  return QRCode.toDataURL(qrcodeValue)
 }

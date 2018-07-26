@@ -1,4 +1,12 @@
 const { encode, decodeFromBase64 } = require('./qrcode')
+const axios = require('./axios')
+const adapterHttp = require('axios/lib/adapters/http')
+
+axios.defaults.adapter = adapterHttp
+
+const missingFinderPatternsUrl = 'https://github.com/cozmo/jsQR/blob/master/src/locator/test-data/missing-finder-patterns.png?raw=true'
+
+jest.setTimeout(1000 * 30)
 
 const QRCODE_IMAGE_BASE64 = [
   'iVBORw0KGgoAAAANSUhEUgAAAMgAAADIAQMAAACXljzdAAAABlBMVEX///8AAABVwtN+AAAA',
@@ -26,5 +34,12 @@ describe('qrcode', () => {
     expect(
       decodeFromBase64('iVBORw0KGgoAAAANSUhEUgAAAMgAAADIAQMAAACXljzdAAAABlBMVEX')
     ).rejects.toHaveProperty('code', 'InvalidQrcodeBuffer')
+  })
+  it('decodeBase64 missing-finder-patterns.png', async () => {
+    expect(
+      decodeFromBase64(
+        await axios.loadBase64(missingFinderPatternsUrl)
+      )
+    ).rejects.toHaveProperty('message', 'DecodeQrcodeFail')
   })
 })
