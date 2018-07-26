@@ -26,7 +26,7 @@ describe('image', () => {
   })
   it('getOssLiteImgUrl', async () => {
     expect(await getOssLiteImgUrl(imgUrl)).toEqual('https://ghost-wwx.oss-cn-hangzhou.aliyuncs.com/ghost/wechatimg256.jpeg?x-oss-process=image/resize,w_200/quality,Q_90')
-    expect(await getOssLiteImgUrl(imgUrl, 1024 * 2)).toEqual('https://ghost-wwx.oss-cn-hangzhou.aliyuncs.com/ghost/wechatimg256.jpeg?x-oss-process=image/resize,w_62/quality,Q_90')
+    expect(await getOssLiteImgUrl(imgUrl, 1024 * 50)).toEqual('https://ghost-wwx.oss-cn-hangzhou.aliyuncs.com/ghost/wechatimg256.jpeg?x-oss-process=image/resize,w_200/quality,Q_90')
     expect(await getOssLiteImgUrl(gifUrl)).toEqual('https://ghost-wwx.oss-cn-hangzhou.aliyuncs.com/ghost/x.gif?x-oss-process=image/resize,w_995/quality,Q_90')
     expect(await getOssLiteImgUrl(gifUrl, 60000)).toEqual('https://ghost-wwx.oss-cn-hangzhou.aliyuncs.com/ghost/x.gif?x-oss-process=image/resize,w_1541/quality,Q_90')
   })
