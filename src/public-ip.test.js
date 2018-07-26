@@ -7,7 +7,7 @@ describe('public-ip', () => {
   it('v4', async () => {
     let now = Date.now()
     expect(isIp.test(await v4())).toEqual(true)
-    expect(Date.now() - now).toBeGreaterThanOrEqual(10)
+    expect(Date.now() - now).toBeGreaterThanOrEqual(5)
     now = Date.now()
     expect(isIp.test(await v4())).toEqual(true)
     expect(Date.now() - now).toBeLessThan(2)
@@ -15,7 +15,7 @@ describe('public-ip', () => {
   it('v4 reload', async () => {
     let now = Date.now()
     expect(isIp.test(await v4({ reload: true }))).toEqual(true)
-    expect(Date.now() - now).toBeGreaterThanOrEqual(10)
+    expect(Date.now() - now).toBeGreaterThanOrEqual(5)
   })
   it('v4 customer url', async () => {
     let now = Date.now()
@@ -23,6 +23,6 @@ describe('public-ip', () => {
       reload: true,
       url: 'http://icanhazip.com/'
     }))).toEqual(true)
-    expect(Date.now() - now).toBeGreaterThanOrEqual(10)
+    expect(Date.now() - now).toBeGreaterThanOrEqual(5)
   })
 })
