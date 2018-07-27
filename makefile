@@ -18,7 +18,7 @@ lint:
 	$(LINT) --format 'node_modules/eslint-friendly-formatter' --fix src/*.js
 
 test: lint
-	$(JEST) --coverage --runInBand $(DIR)
+	$(JEST) --env=node --coverage --runInBand $(DIR)
 
 dev:
 	$(JEST) -o --watch --runInBand --forceExit $(DIR)
