@@ -35,9 +35,10 @@ describe('crypto', () => {
     expect(getmac.isMac(generateMac('a'))).toEqual(true)
     expect(getmac.isMac(generateMac('b'))).toEqual(true)
     expect(getmac.isMac(generateMac('fldjf8r8o34ldskjalfjfd;jfasd'))).toEqual(true)
-    expect(generateMac('c') !== generateMac('d')).toEqual(true)
-    expect(generateMac('c') !== generateMac('C')).toEqual(true)
-    expect(generateMac('c') === generateMac('c')).toEqual(true)
+    let generateMacC = generateMac('c')
+    expect(generateMacC !== generateMac('d')).toEqual(true)
+    expect(generateMacC !== generateMac('C')).toEqual(true)
+    expect(generateMacC === generateMac('c')).toEqual(true)
   })
   it('hmac', async () => {
     expect(hmac('key', 'wwx')).toEqual('e8625f3eeaf93cb7c5ee9e38971f0a5a4700e6dd1e377f83082a8d969d66e816')
