@@ -1,15 +1,5 @@
 const crypto = require('crypto')
 
-export const hash = (s = '', method = 'md5', format = 'hex') => {
-  const sum = crypto.createHash(method)
-  const isBuffer = Buffer.isBuffer(s)
-  if (!isBuffer && typeof s === 'object') {
-    s = JSON.stringify(sortObject(s))
-  }
-  sum.update(s, isBuffer ? 'binary' : 'utf8')
-  return sum.digest(format)
-}
-
 export const sortObject = (o) => {
   if (Array.isArray(o)) { return o.sort() }
   if (!o || typeof o !== 'object') {
@@ -19,6 +9,16 @@ export const sortObject = (o) => {
   return keys.sort().map(
     key => [key, sortObject(o[key])]
   )
+}
+
+export const hash = (s = '', method = 'md5', format = 'hex') => {
+  const sum = crypto.createHash(method)
+  const isBuffer = Buffer.isBuffer(s)
+  if (!isBuffer && typeof s === 'object') {
+    s = JSON.stringify(sortObject(s))
+  }
+  sum.update(s, isBuffer ? 'binary' : 'utf8')
+  return sum.digest(format)
 }
 
 export function hmac (key, s, algorithm = 'sha256', format = 'hex') {

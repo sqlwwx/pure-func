@@ -1,28 +1,32 @@
+const util = require('util')
 const QRCode = require('qrcode')
 const { FileBox } = require('file-box')
 const jsQR = require('jsqr')
 const Jimp = require('jimp')
 
+const readAsync = util.promisify(Jimp.read)
+
 export const fileBoxToQrcodeValue = async (file) => {
-  return new Promise(async (resolve, reject) => {
-    Jimp.read(await file.toBuffer(), (err, image) => {
-      if (err) {
-        err.code = 'InvalidQrcodeBuffer'
-        return reject(err)
-      }
-      const qrCodeImageArray = new Uint8ClampedArray(image.bitmap.data.buffer)
-      const qrcode = jsQR(
-        qrCodeImageArray,
-        image.bitmap.width,
-        image.bitmap.height
-      )
-      if (qrcode) {
-        resolve(qrcode.data)
-      } else {
-        reject(new Error('DecodeQrcodeFail'))
-      }
-    })
-  })
+  let image
+  try {
+    image = await readAsync(
+      await file.toBuffer()
+    )
+  } catch (err) {
+    err.code = 'InvalidQrcodeBuffer'
+    throw err
+  }
+  const qrCodeImageArray = new Uint8ClampedArray(image.bitmap.data.buffer)
+  const qrcode = jsQR(
+    qrCodeImageArray,
+    image.bitmap.width,
+    image.bitmap.height
+  )
+  if (qrcode) {
+    return qrcode.data
+  } else {
+    throw new Error('DecodeQrcodeFail')
+  }
 }
 
 export const decodeFromBase64 = (base64, fileName) => {
