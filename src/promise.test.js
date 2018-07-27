@@ -1,5 +1,7 @@
 const { sleepRandom, doWhile, sleep } = require('./promise')
 
+jest.setTimeout(1000 * 30)
+
 class Test {
   constructor () {
     this.sendCount = 0
@@ -36,6 +38,23 @@ describe('promise', () => {
       return Promise.resolve(++i)
     }, data => data < limit)
     expect(i).toEqual(limit)
+    let j = 0
+    let count = 0
+    let now
+    await doWhile(async () => {
+      now = new Date()
+      await sleep(1000)
+      return Promise.resolve(++j)
+    }, val => val < 10, async (val) => {
+      count++
+      await sleep(1000)
+      expect(val).toBeLessThanOrEqual(10)
+      let diff = Date.now() - now
+      expect(diff).toBeGreaterThanOrEqual(2000)
+      expect(diff).toBeLessThan(3000)
+    })
+    expect(j).toEqual(10)
+    expect(count).toEqual(10)
   })
   it('test', async () => {
     const test = new Test()
