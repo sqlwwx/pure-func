@@ -1,4 +1,4 @@
-const { random } = require('./number')
+const { random, randomNumberStr } = require('./number')
 
 /* eslint-env jest */
 describe('number', () => {
@@ -8,5 +8,16 @@ describe('number', () => {
       expect(num).toBeGreaterThanOrEqual(10)
       expect(num).toBeLessThan(20)
     }
+  })
+  it('randomNumberStr', () => {
+    let numStr = randomNumberStr()
+    let num = parseInt(numStr)
+    expect(typeof numStr).toEqual('string')
+    expect(num).toBeGreaterThan(0)
+    expect(randomNumberStr() !== randomNumberStr()).toEqual(true)
+    expect(randomNumberStr() !== randomNumberStr()).toEqual(true)
+    expect(randomNumberStr(2).length).toEqual(2)
+    expect(randomNumberStr(3).length).toEqual(3)
+    expect(randomNumberStr(12).length).toEqual(12)
   })
 })

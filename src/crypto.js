@@ -1,4 +1,5 @@
 const crypto = require('crypto')
+const { randomNumberStr } = require('./number')
 
 export const sortObject = (o) => {
   if (Array.isArray(o)) { return o.sort() }
@@ -11,23 +12,23 @@ export const sortObject = (o) => {
   )
 }
 
+const updateData = (hash, data, encoding = 'utf8') => {
+  const isBuffer = Buffer.isBuffer(data)
+  if (!isBuffer && typeof data === 'object') {
+    data = JSON.stringify(sortObject(data))
+  }
+  hash.update(data, isBuffer ? 'binary' : encoding)
+}
+
 export const hash = (s = '', method = 'md5', format = 'hex') => {
   const sum = crypto.createHash(method)
-  const isBuffer = Buffer.isBuffer(s)
-  if (!isBuffer && typeof s === 'object') {
-    s = JSON.stringify(sortObject(s))
-  }
-  sum.update(s, isBuffer ? 'binary' : 'utf8')
+  updateData(sum, s)
   return sum.digest(format)
 }
 
 export function hmac (key, s, algorithm = 'sha256', format = 'hex') {
   const hmac = crypto.createHmac(algorithm, key)
-  const isBuffer = Buffer.isBuffer(s)
-  if (!isBuffer && typeof s === 'object') {
-    s = JSON.stringify(sortObject(s))
-  }
-  hmac.update(s, isBuffer ? 'binary' : 'utf8')
+  updateData(hmac, s)
   return hmac.digest(format)
 }
 
@@ -35,15 +36,10 @@ export function base64 (str) {
   return Buffer.from(str).toString('base64')
 }
 
-export function generateMac (usercode = (Math.random() + '').split('.')[1]) {
+export function generateMac (usercode = randomNumberStr(12)) {
   let ret = ''
-  usercode = usercode.split('-').join('')
-  if (usercode.length < 12) {
-    usercode = hash(
-      Array.from(
-        Buffer.from(usercode)
-      )
-    )
+  if (usercode.length !== 12 || !/^[a-z0-9]+$/.test(usercode)) {
+    usercode = hash(usercode)
   }
   for (var x = 0; x < 6; x++) {
     ret += usercode.substring(x * 2, x * 2 + 2) + ':'
