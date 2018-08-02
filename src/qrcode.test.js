@@ -6,7 +6,7 @@ axios.defaults.adapter = adapterHttp
 
 const missingFinderPatternsUrl = 'https://github.com/cozmo/jsQR/blob/master/src/locator/test-data/missing-finder-patterns.png?raw=true'
 
-jest.setTimeout(1000 * 50)
+jest.setTimeout(1000 * 60 * 2)
 
 const QRCODE_IMAGE_BASE64 = [
   'iVBORw0KGgoAAAANSUhEUgAAAMgAAADIAQMAAACXljzdAAAABlBMVEX///8AAABVwtN+AAAA',
