@@ -4,7 +4,7 @@ const adapterHttp = require('axios/lib/adapters/http')
 
 axios.defaults.adapter = adapterHttp
 
-const missingFinderPatternsUrl = 'https://github.com/cozmo/jsQR/blob/master/src/locator/test-data/missing-finder-patterns.png?raw=true'
+const missingFinderPatternsUrl = 'http://github.wuweixing.com/missing-finder-patterns.png'
 
 jest.setTimeout(1000 * 60 * 5)
 
