@@ -8,6 +8,7 @@
     }]
   ],
   "plugins": [
+    ["import", { "libraryName": "lodash", "libraryDirectory": "", "camel2DashComponentName": false }],
     "transform-export-extensions",
     "syntax-object-rest-spread",
     "transform-decorators-legacy",
