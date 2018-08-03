@@ -26,18 +26,25 @@ describe('qrcode', () => {
     expect(qrcodeBase64.startsWith('data:image/png;base64,'))
     expect(qrcodeBase64.length).toBeGreaterThan(50)
   })
-  it('decodeBase64', async () => {
-    let qrcodeValue = await decodeFromBase64(QRCODE_IMAGE_BASE64)
-    expect(qrcodeValue).toEqual('hello, world!')
-    qrcodeValue = await decodeFromBase64(qrcodeBase64.split(',')[1])
-    expect(qrcodeValue).toEqual('wwx')
-    expect(
-      decodeFromBase64('iVBORw0KGgoAAAANSUhEUgAAAMgAAADIAQMAAACXljzdAAAABlBMVEX')
-    ).rejects.toHaveProperty('code', 'InvalidQrcodeBuffer')
-    const base64 = await axios.loadBase64(missingFinderPatternsUrl)
-    expect(
-      decodeFromBase64(base64)
-    ).rejects.toHaveProperty('message', 'DecodeQrcodeFail')
+  describe('decodeBase64', () => {
+    it('hello, world!', async () => {
+      let qrcodeValue = await decodeFromBase64(QRCODE_IMAGE_BASE64)
+      expect(qrcodeValue).toEqual('hello, world!')
+    })
+    it('wwx', async () => {
+      expect(await decodeFromBase64(qrcodeBase64.split(',')[1])).toEqual('wwx')
+    })
+    it('InvalidQrcodeBuffer', async () => {
+      expect(
+        decodeFromBase64('iVBORw0KGgoAAAANSUhEUgAAAMgAAADIAQMAAACXljzdAAAABlBMVEX')
+      ).rejects.toHaveProperty('code', 'InvalidQrcodeBuffer')
+    })
+    it('missingFinderPatternsUrl', async () => {
+      const base64 = await axios.loadBase64(missingFinderPatternsUrl)
+      expect(
+        decodeFromBase64(base64)
+      ).rejects.toHaveProperty('message', 'DecodeQrcodeFail')
+    })
   })
   it('decodeBase64 missing-finder-patterns.png', async () => {
     expect(
