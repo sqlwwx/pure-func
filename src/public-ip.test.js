@@ -15,7 +15,7 @@ describe('public-ip', () => {
   it('v4 reload', async () => {
     let now = Date.now()
     expect(isIp.test(await v4({ reload: true }))).toEqual(true)
-    expect(Date.now() - now).toBeGreaterThanOrEqual(5)
+    expect(Date.now() - now).toBeGreaterThanOrEqual(3)
   })
   it('v4 customer url', async () => {
     let now = Date.now()

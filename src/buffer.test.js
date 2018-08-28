@@ -3,11 +3,8 @@ const { randomByte, bufferToInt } = require('./buffer')
 /* eslint-env jest */
 describe('buffer', () => {
   it('randomByte', () => {
-    const tbs = randomByte()
-    expect(tbs[0] !== 0).toEqual(true)
-    expect(tbs[1] !== 0).toEqual(true)
-    expect(tbs[2] !== 0).toEqual(true)
-    expect(tbs[3] !== 0).toEqual(true)
+    const tbs = randomByte().toString('hex')
+    expect(tbs.toString('hex') !== randomByte().toString('hex')).toEqual(true)
   })
   it('byteArrayToInt', () => {
     expect(
