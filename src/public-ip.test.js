@@ -7,7 +7,7 @@ describe('public-ip', () => {
   it('v4', async () => {
     let now = Date.now()
     expect(isIp.test(await v4())).toEqual(true)
-    expect(Date.now() - now).toBeGreaterThanOrEqual(5)
+    expect(Date.now() - now).toBeGreaterThanOrEqual(3)
     now = Date.now()
     expect(isIp.test(await v4())).toEqual(true)
     expect(Date.now() - now).toBeLessThan(2)
