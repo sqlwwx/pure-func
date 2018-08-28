@@ -30,7 +30,7 @@
     "eslint-plugin-node": "^7.0.0",
     "eslint-plugin-promise": "^4.0.0",
     "eslint-plugin-standard": "^3.1.0",
-    "getmac": "^1.4.3",
+    "getmac": "^1.4.5",
     "jest": "^23.2.0"
   },
   "peerDependencies": {
