@@ -28,6 +28,9 @@ describe('password', () => {
     expect(hash0).toHaveLength(60)
     expect(hash1).toHaveLength(60)
     expect(hash0).not.toBe(hash1)
+    expect(
+      generateHash(hash0)
+    ).rejects.toHaveProperty('message', 'bcrypt tried to hash another bcrypt hash')
   })
   it('verifyPassword', async () => {
     expect(verifyPassword(hash0, 'wwx')).toBe(true)
