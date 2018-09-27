@@ -1,8 +1,15 @@
-const { loadConfig } = require('./config')
+const { loadConfig, requireFile } = require('./config')
 const { resolve } = require('path')
 
 /* eslint-env jest */
 describe('config', () => {
+  describe('requireFile', () => {
+    it('require file without ext', async () => {
+      expect(
+        requireFile(resolve(__dirname, 'config', 'test')).toString()
+      ).toEqual('none\n')
+    })
+  })
   describe('loadConfig', () => {
     it('one config', () => {
       expect(

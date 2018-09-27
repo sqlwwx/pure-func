@@ -8,7 +8,7 @@ export const requireFile = filePath => {
   }
   try {
     const extName = path.extname(filePath)
-    if (extName && !require('module')._extensions[extName]) {
+    if (!extName || !require('module')._extensions[extName]) {
       return readFileSync(filePath)
     }
     const obj = require(filePath)
