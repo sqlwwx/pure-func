@@ -25,8 +25,8 @@ export const requireFile = filePath => {
 export const loadConfig = (dir, name, exts = ['json', 'js']) => {
   const { NODE_ENV = 'development' } = process.env
   const configs = [
-    ...exts.map(ext => [name, ext].join('.')),
-    ...exts.map(ext => [name, NODE_ENV, ext].join('.'))
+    ...exts.map(ext => name + '.' + ext),
+    ...exts.map(ext => name + '.' + NODE_ENV + '.' + ext)
   ].map(name => requireFile(path.resolve(dir, name)))
   return merge({}, ...configs)
 }
