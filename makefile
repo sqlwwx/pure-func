@@ -7,7 +7,7 @@ DIR ?= src
 install:
 	yarn install
 	yarn global add jsinspect
-	yarn add axios emoji-regex fast-xml-parser file-box he jimp jsqr qrcode --peer
+	yarn add axios emoji-regex fast-xml-parser file-box he jimp jsqr qrcode bcrypt jsonwebtoken --peer
 
 build:
 	$(BABEL) src -d . --copy-files
