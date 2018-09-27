@@ -2,4 +2,4 @@ coverage/
 /*.js
 yarn.lock
 node_modules/
-secrets/
+/secrets/
