@@ -23,7 +23,7 @@ describe('config', () => {
         debug: true
       })
     })
-    it('config js & json', function() {
+    it('config js & json', () => {
       expect(
         loadConfig(resolve(__dirname, 'config'), 'config')
       ).toEqual({
@@ -34,7 +34,7 @@ describe('config', () => {
         }
       })
     })
-    it('config with env', function() {
+    it('config with env', () => {
       expect(
         loadConfig(resolve(__dirname, 'config'), 'configWithEnv')
       ).toEqual({
