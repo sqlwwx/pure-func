@@ -16,6 +16,7 @@ const config = {
 describe('password', () => {
   let hash0
   let hash1
+  let hash2
   let token0
   let token1
   it('checkInput', () => {
@@ -25,8 +26,10 @@ describe('password', () => {
   it('generateHash', async () => {
     hash0 = await generateHash('wwx')
     hash1 = await generateHash('wwx')
+    hash2 = await generateHash()
     expect(hash0).toHaveLength(60)
     expect(hash1).toHaveLength(60)
+    expect(hash2).toHaveLength(60)
     expect(hash0).not.toBe(hash1)
     expect(
       generateHash(hash0)
@@ -35,6 +38,7 @@ describe('password', () => {
   it('verifyPassword', async () => {
     expect(verifyPassword(hash0, 'wwx')).toBe(true)
     expect(verifyPassword(hash1, 'wwx')).toBe(true)
+    expect(verifyPassword(hash2, '')).toBe(true)
     expect(verifyPassword(hash0, 'wwx1')).toBe(false)
   })
   it('createToken', () => {
