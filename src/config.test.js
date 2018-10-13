@@ -9,6 +9,14 @@ describe('config', () => {
         requireFile(resolve(__dirname, 'config', 'test')).toString()
       ).toEqual('none\n')
     })
+    it('require file error json', async () => {
+      function requireErrorJson () {
+        requireFile(resolve(__dirname, 'config', 'errJson.json'))
+      }
+      expect(
+        requireErrorJson
+      ).toThrowError('Unexpected token')
+    })
   })
   describe('loadConfig', () => {
     it('one config', () => {
