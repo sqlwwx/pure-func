@@ -52,6 +52,18 @@ describe('config', () => {
           username: 'root'
         }
       })
+      // process.env.NODE_ENV = null => process.env.NODE_ENV === 'null'
+      // process.env.NODE_ENV = null
+      delete process.env.NODE_ENV
+      expect(
+        loadConfig(resolve(__dirname, 'config'), 'configWithEnv')
+      ).toEqual({
+        debug: true,
+        db: {
+          host: 'localhost',
+          username: 'dev'
+        }
+      })
     })
   })
 })

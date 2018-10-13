@@ -13,7 +13,7 @@ export const requireFile = filePath => {
     }
     const obj = require(filePath)
     if (obj && obj.__esModule) {
-      return 'default' in obj ? obj.default : obj
+      return obj.default || obj
     }
     return obj
   } catch (err) {
