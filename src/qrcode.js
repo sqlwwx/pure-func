@@ -34,6 +34,6 @@ export const decodeFromBase64 = (base64, fileName) => {
   return fileBoxToQrcodeValue(file)
 }
 
-export const encode = (qrcodeValue) => {
-  return QRCode.toDataURL(qrcodeValue)
+export const encode = (qrcodeValue, options) => {
+  return QRCode.toDataURL(qrcodeValue, options)
 }
