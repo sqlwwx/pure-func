@@ -18,7 +18,7 @@ jest.setTimeout(1000 * 30)
 /* eslint-env jest */
 describe('image', () => {
   it('getOssImageInfo', async () => {
-    const imageInfo = await getOssImageInfo(gifUrl + '')
+    const imageInfo = await getOssImageInfo(`${gifUrl}`)
     expect(imageInfo).toHaveProperty('FileSize', { value: '222541' })
     expect(imageInfo).toHaveProperty('Format', { value: 'gif' })
     expect(imageInfo).toHaveProperty('ImageHeight', { value: '1624' })

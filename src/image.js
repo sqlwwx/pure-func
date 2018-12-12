@@ -14,9 +14,8 @@ export const getOssLiteImgUrl = async (url, size = 25000, maxWidth = 600) => {
   if (fileSize > size) {
     const width = Math.floor(Number(data.ImageWidth.value) / Math.sqrt((fileSize / size)))
     return `${url}?x-oss-process=image/resize,w_${width}/quality,Q_90`
-  } else {
-    return `${url}?x-oss-process=image/resize,w_${Number(data.ImageWidth.value) > maxWidth ? maxWidth : data.ImageWidth.value}/quality,Q_90`
   }
+  return `${url}?x-oss-process=image/resize,w_${Number(data.ImageWidth.value) > maxWidth ? maxWidth : data.ImageWidth.value}/quality,Q_90`
 }
 
 export const getOssLiteImgBuffer = async (url, size) => {

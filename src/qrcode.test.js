@@ -1,6 +1,6 @@
+const adapterHttp = require('axios/lib/adapters/http')
 const { encode, decodeFromBase64 } = require('./qrcode')
 const axios = require('./axios')
-const adapterHttp = require('axios/lib/adapters/http')
 
 axios.defaults.adapter = adapterHttp
 
@@ -28,7 +28,7 @@ describe('qrcode', () => {
   })
   describe('decodeBase64', () => {
     it('hello, world!', async () => {
-      let qrcodeValue = await decodeFromBase64(QRCODE_IMAGE_BASE64)
+      const qrcodeValue = await decodeFromBase64(QRCODE_IMAGE_BASE64)
       expect(qrcodeValue).toEqual('hello, world!')
     })
     it('wwx', async () => {

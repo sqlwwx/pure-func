@@ -13,12 +13,12 @@ describe('public-ip', () => {
     expect(Date.now() - now).toBeLessThan(2)
   })
   it('v4 reload', async () => {
-    let now = Date.now()
+    const now = Date.now()
     expect(isIp.test(await v4({ reload: true }))).toEqual(true)
     expect(Date.now() - now).toBeGreaterThanOrEqual(2)
   })
   it('v4 customer url', async () => {
-    let now = Date.now()
+    const now = Date.now()
     expect(isIp.test(await v4({
       reload: true,
       url: 'http://icanhazip.com/'

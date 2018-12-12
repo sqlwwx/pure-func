@@ -1,4 +1,4 @@
-export const toNum = (str) => {
+export const toNum = str => {
   if (typeof str === 'number') { return str }
   let num = Number(str)
   if (Number.isNaN(num)) {
@@ -6,7 +6,7 @@ export const toNum = (str) => {
   } else {
     return num
   }
-  for (let i = 0; i < str.length; i++) {
+  for (let i = 0; i < str.length; i += 1) {
     num += str.charCodeAt(i)
   }
   return num

@@ -1,5 +1,5 @@
 module.exports = {
   "parser": "babel-eslint",
-  "extends": "standard",
+  "extends": ["standard-airbnb"],
   "plugins": ["you-dont-need-lodash-underscore"]
 };

@@ -18,10 +18,9 @@ const verifyPassword = (hash, password) => {
  * @param {string} privateKey 私钥
  */
 const createToken = (data, privateKey, expiresIn = '1 days', algorithm = 'RS256') => {
-  delete data.iat
-  delete data.exp
+  const { iat, exp, ...signData } = data
   return jwt.sign(
-    data,
+    signData,
     privateKey,
     { expiresIn, algorithm }
   )
@@ -40,13 +39,13 @@ const verifyToken = (token, publicKey, algorithms = ['RS256']) => {
   )
 }
 
-const isBcryptHash = (str) => {
+const isBcryptHash = str => {
   const protocol = str.split('$')
-  return protocol.length === 4 &&
-    protocol[0] === '' &&
-    ['2a', '2b', '2y'].indexOf(protocol[1]) > -1 &&
-    /^\d+$/.test(protocol[2]) &&
-    protocol[3].length === 53
+  return protocol.length === 4
+    && protocol[0] === ''
+    && ['2a', '2b', '2y'].indexOf(protocol[1]) > -1
+    && /^\d+$/.test(protocol[2])
+    && protocol[3].length === 53
 }
 
 /**

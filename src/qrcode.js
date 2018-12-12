@@ -6,7 +6,7 @@ const Jimp = require('jimp')
 
 const readAsync = util.promisify(Jimp.read)
 
-export const fileBoxToQrcodeValue = async (file) => {
+export const fileBoxToQrcodeValue = async file => {
   let image
   try {
     image = await readAsync(
@@ -24,13 +24,12 @@ export const fileBoxToQrcodeValue = async (file) => {
   )
   if (qrcode) {
     return qrcode.data
-  } else {
-    throw new Error('DecodeQrcodeFail')
   }
+  throw new Error('DecodeQrcodeFail')
 }
 
 export const decodeFromBase64 = (base64, fileName) => {
-  const file = FileBox.fromBase64(base64, fileName || Date.now() + '')
+  const file = FileBox.fromBase64(base64, fileName || `${Date.now()}`)
   return fileBoxToQrcodeValue(file)
 }
 
