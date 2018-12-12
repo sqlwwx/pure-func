@@ -30,4 +30,11 @@ describe('number', () => {
     expect(randomNumberStr(3).length).toEqual(3)
     expect(randomNumberStr(12).length).toEqual(12)
   })
+  it('genCode', () => {
+    expect((0).genCode('01')).toEqual('0')
+    expect((1).genCode('01')).toEqual('1')
+    expect((2).genCode('01')).toEqual('10')
+    expect((3).genCode('01')).toEqual('11')
+    expect((15068729212).genCode()).toEqual('n6vbCV')
+  })
 })
