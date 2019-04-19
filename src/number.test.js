@@ -11,7 +11,7 @@ describe('number', () => {
     }
     expect(
       Math.abs(counts.count_0 - counts.count_1)
-    ).toBeLessThan(200)
+    ).toBeLessThan(300)
     for (let i = 0, len = 1000; i < len; i += 1) {
       const num = random(10, 20)
       expect(num).toBeGreaterThanOrEqual(10)
