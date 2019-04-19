@@ -8,3 +8,4 @@ yarn.lock
 .travis.yml
 secrets/
 config/
+commitlint.config.js
