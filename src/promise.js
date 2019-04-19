@@ -4,11 +4,16 @@ export const sleep = (timeout = 1000) => new Promise(resolve => {
   setTimeout(resolve, timeout)
 })
 
-export const doWhile = async (action, condition, doItem) => action().then(async data => {
-  if (doItem) {
-    await doItem(data)
-  }
-  return condition(data) ? doWhile(action, condition, doItem) : Promise.resolve(data)
-})
+export const doWhile = async (action, condition, doItem) => {
+  console.warn('use do...while statement')
+  let data
+  do {
+    // eslint-disable-next-line no-await-in-loop
+    data = await action()
+    // eslint-disable-next-line no-await-in-loop
+    if (doItem) { await doItem(data) }
+  } while (condition(data))
+  return data
+}
 
 export const sleepRandom = (from, to) => sleep(random(from, to))
