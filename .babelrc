@@ -18,9 +18,7 @@
     "@babel/plugin-proposal-export-namespace-from",
     "@babel/plugin-syntax-object-rest-spread",
     [
-      "@babel/plugin-proposal-decorators", {
-        "legacy": true
-      }
+      "@babel/plugin-proposal-decorators", { "legacy": true }
     ],
     "@babel/plugin-proposal-class-properties"
   ]
