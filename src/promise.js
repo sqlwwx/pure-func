@@ -5,6 +5,7 @@ export const sleep = (timeout = 1000) => new Promise(resolve => {
 })
 
 export const doWhile = async (action, condition, doItem) => {
+  // eslint-disable-next-line no-console
   console.warn('use do...while statement')
   let data
   do {
