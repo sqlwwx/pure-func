@@ -1,6 +1,19 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [2.0.2](https://github.com/sqlwwx/pure-func/compare/v1.1.0...v2.0.2) (2019-05-17)
+
+
+### Features
+
+* lodash.memoizeDebounce ([a2ff5ee](https://github.com/sqlwwx/pure-func/commit/a2ff5ee))
+* node > 10 ([06fea31](https://github.com/sqlwwx/pure-func/commit/06fea31))
+* update depends ([fbf2e4f](https://github.com/sqlwwx/pure-func/commit/fbf2e4f))
+* update depends ([2a7b3b1](https://github.com/sqlwwx/pure-func/commit/2a7b3b1))
+* warn doWhile ([8df0123](https://github.com/sqlwwx/pure-func/commit/8df0123))
+
+
 
 # [1.2.0](https://github.com/sqlwwx/pure-func/compare/v1.1.0...v1.2.0) (2019-04-19)
 

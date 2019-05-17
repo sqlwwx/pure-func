@@ -1,6 +1,6 @@
 {
   "name": "pure-func",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -54,7 +54,7 @@
     "fast-xml-parser": "^3.12.16",
     "file-box": "^0.8.27",
     "he": "^1.2.0",
-    "jimp": "^0.6.1",
+    "jimp": "^0.6.4",
     "jsonwebtoken": "^8.5.1",
     "jsqr": "^1.2.0",
     "lodash": "^4.17.11",
