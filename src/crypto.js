@@ -50,3 +50,9 @@ export function generateMac (usercode = randomNumberStr(12)) {
   ret = ret.substring(0, 17)
   return ret
 }
+
+export const base64ToUrlSafe = v => v.replace(/\//g, '_').replace(/\+/g, '-')
+
+export const urlSafeBase64 = str => base64ToUrlSafe(
+  Buffer.from(str).toString('base64')
+)

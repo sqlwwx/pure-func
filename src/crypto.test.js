@@ -1,6 +1,8 @@
 const getmac = require('getmac')
 const {
-  hash, sortObject, generateMac, hmac, base64
+  hash, sortObject, generateMac, hmac, base64,
+  base64ToUrlSafe,
+  urlSafeBase64
 } = require('./crypto')
 
 /* eslint-env jest */
@@ -49,5 +51,12 @@ describe('crypto', () => {
   })
   it('base64', async () => {
     expect(base64('wwx')).toEqual('d3d4')
+  })
+  it('base64ToUrlSafe', async () => {
+    expect(base64ToUrlSafe('+/==')).toEqual('-_==')
+  })
+  it('urlSafeBase64', async () => {
+    expect(base64('a>?')).toEqual('YT4/')
+    expect(urlSafeBase64('a>?')).toEqual('YT4_')
   })
 })
