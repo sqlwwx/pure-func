@@ -20,7 +20,7 @@ describe('lodash', () => {
       expect(logs.length).toEqual(0)
       await sleep(500)
       expect(logs.length).toEqual(0)
-      await sleep(500)
+      await sleep(600)
       expect(logs.length).toEqual(1)
       test(1)
       test('2')
