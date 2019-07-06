@@ -20,7 +20,7 @@ describe('lodash', () => {
       expect(logs.length).toEqual(0)
       await sleep(500)
       expect(logs.length).toEqual(0)
-      await sleep(600)
+      await sleep(510)
       expect(logs.length).toEqual(1)
       test(1)
       test('2')
@@ -32,7 +32,7 @@ describe('lodash', () => {
       test(3)
       test(3)
       expect(logs.length).toEqual(3)
-      await sleep(1000)
+      await sleep(1010)
       expect(logs.length).toEqual(4)
       const test2 = memoizeDebounce(i => {
         logs2.push(i)
@@ -53,7 +53,7 @@ describe('lodash', () => {
       test3('1')
       test3('1')
       expect(logs3.length).toEqual(1)
-      await sleep(1000)
+      await sleep(1010)
       expect(logs3[0]).toEqual(1)
       const obj = {
         name: 'test',
@@ -65,7 +65,7 @@ describe('lodash', () => {
       obj.test = memoizeDebounce(testFn.bind(obj), 1000, i => `${i}`)
       obj.test(1)
       obj.test('1')
-      await sleep(1000)
+      await sleep(1010)
       expect(obj.logs.length).toEqual(1)
     })
   })
