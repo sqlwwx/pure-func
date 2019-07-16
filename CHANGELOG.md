@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.5](https://github.com/sqlwwx/pure-func/compare/v2.0.4...v2.0.5) (2019-07-16)
+
+
+### Features
+
+* decodeUrlSafeBase64 ([c368297](https://github.com/sqlwwx/pure-func/commit/c368297))
+
+
+
 ### [2.0.4](https://github.com/sqlwwx/pure-func/compare/v1.2.0...v2.0.4) (2019-07-05)
 
 
