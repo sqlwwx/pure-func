@@ -56,3 +56,5 @@ export const base64ToUrlSafe = v => v.replace(/\//g, '_').replace(/\+/g, '-')
 export const urlSafeBase64 = str => base64ToUrlSafe(
   Buffer.from(str).toString('base64')
 )
+
+export const decodeUrlSafeBase64 = str => Buffer.from(str.replace(/_/g, '/').replace(/-/g, '+'), 'base64')

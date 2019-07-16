@@ -1,7 +1,7 @@
 const getmac = require('getmac')
 const {
   hash, sortObject, generateMac, hmac, base64,
-  base64ToUrlSafe,
+  base64ToUrlSafe, decodeUrlSafeBase64,
   urlSafeBase64
 } = require('./crypto')
 
@@ -58,5 +58,6 @@ describe('crypto', () => {
   it('urlSafeBase64', async () => {
     expect(base64('a>?')).toEqual('YT4/')
     expect(urlSafeBase64('a>?')).toEqual('YT4_')
+    expect(decodeUrlSafeBase64('YT4_').toString()).toEqual('a>?')
   })
 })
