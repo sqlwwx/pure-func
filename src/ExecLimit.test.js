@@ -17,6 +17,6 @@ describe('ExecLimit', () => {
       })
     }
     expect(new Set(results).size).toEqual(results.length)
-    expect(results.length).toBeLessThan(50)
+    expect(results.length).toBeLessThan(48)
   })
 })

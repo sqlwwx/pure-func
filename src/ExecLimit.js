@@ -1,19 +1,35 @@
 module.exports = class ExecLimit {
   constructor () {
-    this.history = new Set()
+    this.namespaces = Object.create(null)
   }
 
-  isExeced (key) {
-    if (this.history.has(key)) {
+  clear (namespace) {
+    if (namespace) {
+      delete this.namespaces[namespace]
+    } else {
+      this.namespaces = Object.create(null)
+    }
+  }
+
+  getHistory (namespace) {
+    if (!this.namespaces[namespace]) {
+      this.namespaces[namespace] = new Set()
+    }
+    return this.namespaces[namespace]
+  }
+
+  isExeced (key, namespace) {
+    const history = this.getHistory(namespace)
+    if (history.has(key)) {
       return false
     }
-    this.history.clear()
-    this.history.add(key)
+    history.clear()
+    history.add(key)
     return true
   }
 
-  async exec (key, fn) {
-    if (this.isExeced(key)) {
+  async exec (key, fn, namespace = 'default') {
+    if (this.isExeced(key, namespace)) {
       return fn()
     }
     return Promise.resolve()
