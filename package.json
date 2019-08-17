@@ -66,12 +66,6 @@
       "@commitlint/config-conventional"
     ]
   },
-  "lint-staged": {
-    "*.{js,jsx}": [
-      "eslint --format $(shell node -p \"require.resolve('eslint-friendly-formatter')\") --fix",
-      "git add"
-    ]
-  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
