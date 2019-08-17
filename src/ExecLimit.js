@@ -21,15 +21,15 @@ module.exports = class ExecLimit {
   isExeced (key, namespace) {
     const history = this.getHistory(namespace)
     if (history.has(key)) {
-      return false
+      return true
     }
     history.clear()
     history.add(key)
-    return true
+    return false
   }
 
   async exec (key, fn, namespace = 'default') {
-    if (this.isExeced(key, namespace)) {
+    if (!this.isExeced(key, namespace)) {
       return fn()
     }
     return Promise.resolve()

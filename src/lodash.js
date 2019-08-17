@@ -3,6 +3,7 @@ const _ = require('lodash')
 _.mixin({
   memoizeDebounce (func, delay, resolver, options = {}) {
     if (!resolver) {
+      // eslint-disable-next-line no-console
       console.warn('should have resolver')
     }
     const mem = _.memoize(() => {
