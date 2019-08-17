@@ -9,3 +9,4 @@ yarn.lock
 secrets/
 config/
 commitlint.config.js
+lint-staged.config.js
