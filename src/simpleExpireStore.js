@@ -1,19 +1,28 @@
 const simpleExpireStore = (obj = {}, timeout = 1000, checkInterval = 60000) => {
-  setInterval(() => {
+  const interval = setInterval(() => {
     Object.entries(obj).filter(([, { expiredAt }]) => expiredAt < Date.now()).forEach(([key]) => {
       return Reflect.deleteProperty(obj, key)
     })
   }, checkInterval)
+  Object.assign(obj, {
+    clearInterval: () => {
+      clearInterval(interval)
+    }
+  })
   return new Proxy(obj, {
     get (target, name) {
-      if (!target[name]) {
+      const value = target[name]
+      if (!value) {
         return undefined
       }
-      if (target[name].expiredAt < Date.now()) {
+      if (value instanceof Function) {
+        return value
+      }
+      if (value.expiredAt < Date.now()) {
         Reflect.deleteProperty(target, name)
         return undefined
       }
-      return target[name].value
+      return value.value
     },
     set (target, prop, value) {
       if (value && value.expiredAt && Number.isInteger(value.expiredAt)) {
