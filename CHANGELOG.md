@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.11](https://github.com/sqlwwx/pure-func/compare/v2.0.8...v2.0.11) (2019-08-17)
+
+
+### Features
+
+* simpleExpireStore ([3a26b1c](https://github.com/sqlwwx/pure-func/commit/3a26b1c))
+* simpleExpireStore support clearInterval ([a8bb40a](https://github.com/sqlwwx/pure-func/commit/a8bb40a))
+
 ### [2.0.10](///compare/v2.0.7...v2.0.10) (2019-08-17)
 
 
