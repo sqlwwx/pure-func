@@ -7,12 +7,13 @@ const xmlValidate = fastXmlParser.validate
 export const parse = async (xmlData, options = {}) => {
   const validate = xmlValidate(xmlData)
   if (validate === true) {
-    return fastXmlParser.parse(xmlData, Object.assign({
+    return fastXmlParser.parse(xmlData, {
       ignoreAttributes: false,
       cdataTagName: '__cdata',
       attrValueProcessor: a => he.decode(a, { isAttributeValue: true }),
-      tagValueProcessor: a => he.decode(a)
-    }, options))
+      tagValueProcessor: a => he.decode(a),
+      ...options
+    })
   }
   throw validate.err
 }
@@ -30,7 +31,7 @@ export const toXml = (jsonOrObj, options) => {
     defaultParser = defaultParser || new J2xParser(defaultParserOptions)
     parser = defaultParser
   } else {
-    parser = new J2xParser(Object.assign({}, defaultParserOptions, options))
+    parser = new J2xParser({ ...defaultParserOptions, ...options })
   }
   return parser.parse(jsonOrObj)
 }

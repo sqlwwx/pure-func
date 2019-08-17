@@ -1,6 +1,7 @@
 LINT = $(PWD)/node_modules/.bin/eslint
 JEST = $(PWD)/node_modules/.bin/jest
 BABEL = $(PWD)/node_modules/.bin/babel
+FORMATTER = $(shell node -p "require.resolve('eslint-friendly-formatter')")
 
 DIR ?= src
 
@@ -16,7 +17,7 @@ watch:
 	$(BABEL) -w src -d . --copy-files
 
 lint:
-	$(LINT) --format 'node_modules/eslint-friendly-formatter' --fix src/*.js
+	$(LINT) --format $(FORMATTER) --fix src/*.js
 
 test: lint
 	$(JEST) --env=node --coverage --runInBand $(DIR)
