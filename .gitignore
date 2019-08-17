@@ -1,5 +1,6 @@
 coverage/
 /*.js
+!/lint-staged.config.js
 yarn.lock
 node_modules/
 /secrets/

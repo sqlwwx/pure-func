@@ -1,5 +1,8 @@
 module.exports = {
   parser: 'babel-eslint',
-  extends: ['standard-airbnb'],
-  plugins: ['you-dont-need-lodash-underscore']
+  extends: ['standard-airbnb-base'],
+  plugins: ['you-dont-need-lodash-underscore'],
+  rules: {
+    'react/no-deprecated': [0]
+  }
 }

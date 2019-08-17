@@ -38,7 +38,7 @@
     "core-js": "3",
     "coveralls": "^3.0.3",
     "eslint": "^6.0.0",
-    "eslint-config-standard-airbnb": "^1.0.0",
+    "eslint-config-standard-airbnb-base": "^1.0.2",
     "eslint-friendly-formatter": "^4.0.1",
     "eslint-plugin-you-dont-need-lodash-underscore": "^6.4.0",
     "getmac": "^1.4.6",
@@ -68,7 +68,7 @@
   },
   "lint-staged": {
     "*.{js,jsx}": [
-      "eslint --format $(node -p \"require.resolve('eslint-friendly-formatter')\") --fix",
+      "eslint --format $(shell node -p \"require.resolve('eslint-friendly-formatter')\") --fix",
       "git add"
     ]
   },
