@@ -10,3 +10,5 @@ secrets/
 config/
 commitlint.config.js
 lint-staged.config.js
+babel.config.js
+.huskyrc.js

@@ -35,22 +35,22 @@
     "babel-eslint": "^10.0.0",
     "babel-jest": "^24.8.0",
     "babel-plugin-import": "^1.11.0",
-    "core-js": "3",
     "coveralls": "^3.0.3",
     "eslint": "^6.0.0",
     "eslint-config-standard-airbnb-base": "^1.0.2",
     "eslint-friendly-formatter": "^4.0.1",
     "eslint-plugin-you-dont-need-lodash-underscore": "^6.4.0",
     "getmac": "^1.4.6",
-    "husky": "^3.0.0",
+    "husky": "^3.0.4",
     "jest": "^24.7.1",
-    "lint-staged": "^9.2.0",
+    "lint-staged": "^9.2.3",
     "regenerator-runtime": "^0.13.2",
     "standard-version": "^7.0.0"
   },
   "peerDependencies": {
     "axios": "^0.19.0",
     "bcrypt": "^3.0.6",
+    "core-js": "3",
     "emoji-regex": "^8.0.0",
     "fast-xml-parser": "^3.12.20",
     "file-box": "^0.8.27",
@@ -60,16 +60,5 @@
     "jsqr": "^1.2.0",
     "lodash": "^4.17.15",
     "qrcode": "^1.4.1"
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
   }
 }

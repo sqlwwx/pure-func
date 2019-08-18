@@ -11,7 +11,7 @@ install:
 	yarn add axios emoji-regex fast-xml-parser file-box he jimp jsqr qrcode bcrypt jsonwebtoken lodash --peer
 
 build:
-	$(BABEL) src -d . --copy-files
+	NODE_ENV=production $(BABEL) src -d . --copy-files
 
 watch:
 	$(BABEL) -w src -d . --copy-files
