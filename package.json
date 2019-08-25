@@ -11,7 +11,7 @@
   },
   "author": "sqlwwx <wwx_2012@live.com> (http://wiki.lab.wuweixing.com)",
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=10.15"
   },
   "license": "MIT",
   "bugs": {
