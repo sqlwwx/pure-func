@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.12](https://github.com/sqlwwx/pure-func/compare/v2.0.11...v2.0.12) (2019-08-25)
+
+
+### Bug Fixes
+
+* engines node >10.15 ([3cc778c](https://github.com/sqlwwx/pure-func/commit/3cc778c))
+
 ### [2.0.11](https://github.com/sqlwwx/pure-func/compare/v2.0.8...v2.0.11) (2019-08-17)
 
 
