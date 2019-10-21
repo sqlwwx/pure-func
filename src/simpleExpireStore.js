@@ -26,7 +26,7 @@ const simpleExpireStore = (obj = {}, timeout = 1000, checkInterval = 60000) => {
       return value.value
     },
     set (target, prop, value) {
-      if (value && value.expiredAt && Number.isInteger(value.expiredAt)) {
+      if (value && value.hasOwnProperty('value') && Number.isInteger(value.expiredAt)) {
         return Reflect.set(target, prop, value)
       }
       return Reflect.set(target, prop, {
