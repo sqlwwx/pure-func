@@ -1,8 +1,10 @@
-const isFullValue = obj => Boolean(
+const isExpiredValue = obj => Boolean(
   obj
   && Object.prototype.hasOwnProperty.call(obj, 'value')
   && Number.isInteger(obj.expiredAt)
 )
+
+const isNoneValue = value => Boolean(value === undefined || value === null)
 
 const simpleExpireStore = (obj = {}, timeout = 1000, checkInterval = 60000) => {
   const interval = setInterval(() => {
@@ -22,7 +24,7 @@ const simpleExpireStore = (obj = {}, timeout = 1000, checkInterval = 60000) => {
       if (value instanceof Function) {
         return value
       }
-      if (!value) {
+      if (!isExpiredValue(value)) {
         return undefined
       }
       if (value.expiredAt < Date.now()) {
@@ -32,10 +34,10 @@ const simpleExpireStore = (obj = {}, timeout = 1000, checkInterval = 60000) => {
       return value.value
     },
     set (target, prop, value) {
-      if (value === undefined || value === null) {
+      if (isNoneValue(value)) {
         return Reflect.deleteProperty(target, prop)
       }
-      if (isFullValue(value)) {
+      if (isExpiredValue(value)) {
         return Reflect.set(target, prop, value)
       }
       return Reflect.set(target, prop, {
