@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.16](https://github.com/sqlwwx/pure-func/compare/v2.0.15...v2.0.16) (2019-10-22)
+
+
+### Bug Fixes
+
+* simpleExpireStore check isExpiredValue ([fb534bc](https://github.com/sqlwwx/pure-func/commit/fb534bc))
+
 ### [2.0.15](https://github.com/sqlwwx/pure-func/compare/v2.0.14...v2.0.15) (2019-10-22)
 
 
