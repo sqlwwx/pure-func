@@ -10,7 +10,7 @@ describe('command', () => {
       const ret = await execCommand('ls')
       assert(ret.includes('command.test.js'))
     })
-    it('ls with pwd', async () => {
+    it.skip('ls with pwd', async () => {
       const ret = await execCommand('ls', {
         cwd: path.resolve(__dirname, '../secrets')
       })
