@@ -12,6 +12,14 @@ describe('simpleExpireStore', () => {
     store.b = false
     store.c = true
     store.d = { value: false, expiredAt: Date.now() + 200 }
+    store.e = false
+    store.f = 0
+    expect(store.e).toEqual(false)
+    expect(store.f).toEqual(0)
+    store.e = undefined
+    store.f = null
+    expect(source).not.toHaveProperty('e')
+    expect(source).not.toHaveProperty('f')
     expect(store.a).toEqual(1)
     expect(store.b).toEqual(false)
     await sleep(100)

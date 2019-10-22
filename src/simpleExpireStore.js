@@ -1,3 +1,9 @@
+const isFullValue = obj => Boolean(
+  obj
+  && Object.prototype.hasOwnProperty.call(obj, 'value')
+  && Number.isInteger(obj.expiredAt)
+)
+
 const simpleExpireStore = (obj = {}, timeout = 1000, checkInterval = 60000) => {
   const interval = setInterval(() => {
     Object.entries(obj).filter(([, { expiredAt }]) => expiredAt < Date.now()).forEach(([key]) => {
@@ -26,7 +32,10 @@ const simpleExpireStore = (obj = {}, timeout = 1000, checkInterval = 60000) => {
       return value.value
     },
     set (target, prop, value) {
-      if (value && value.hasOwnProperty('value') && Number.isInteger(value.expiredAt)) {
+      if (value === undefined || value === null) {
+        return Reflect.deleteProperty(target, prop)
+      }
+      if (isFullValue(value)) {
         return Reflect.set(target, prop, value)
       }
       return Reflect.set(target, prop, {
