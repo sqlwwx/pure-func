@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.15](https://github.com/sqlwwx/pure-func/compare/v2.0.14...v2.0.15) (2019-10-22)
+
+
+### Features
+
+* support reset value ([d516346](https://github.com/sqlwwx/pure-func/commit/d516346))
+
 ### [2.0.14](https://github.com/sqlwwx/pure-func/compare/v2.0.13...v2.0.14) (2019-09-21)
 
 ### [2.0.13](https://github.com/sqlwwx/pure-func/compare/v2.0.12...v2.0.13) (2019-09-21)
