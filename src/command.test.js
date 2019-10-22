@@ -11,9 +11,11 @@ describe('command', () => {
       assert(ret.includes('command.test.js'))
     })
     it('ls with pwd', async () => {
-      const ret = await execCommand('ls', { cwd: path.resolve(__dirname, '..') })
+      const ret = await execCommand('ls', {
+        cwd: path.resolve(__dirname, '../secrets')
+      })
       assert(!ret.includes('command.test.js'))
-      assert(ret.includes('package.json'))
+      assert(ret.includes('jwt_rsa.pub'))
     })
     it('onData', async () => {
       let onDataString = ''
