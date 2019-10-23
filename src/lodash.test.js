@@ -1,10 +1,32 @@
-const { memoizeDebounce } = require('./lodash')
+const { memoizeDebounce, camelCaseObject, snakeCaseObject } = require('./lodash')
 const { sleep } = require('./promise')
 
 jest.setTimeout(1000 * 30)
 
 /* eslint-env jest */
 describe('lodash', () => {
+  it('camelCaseObject', () => {
+    expect(camelCaseObject({
+      app_id: 1,
+      a_b: 2,
+      c_d_3: 4
+    })).toEqual({
+      appId: 1,
+      aB: 2,
+      cD3: 4
+    })
+  })
+  it('snakeCaseObject', () => {
+    expect(snakeCaseObject({
+      appId: 1,
+      aB: 2,
+      cD3: 4
+    })).toEqual({
+      app_id: 1,
+      a_b: 2,
+      c_d_3: 4
+    })
+  })
   describe('memoizeDebounce', () => {
     it('should success', async () => {
       const logs = []
