@@ -24,7 +24,7 @@ describe('lodash', () => {
     })).toEqual({
       app_id: 1,
       a_b: 2,
-      c_d_3: 4
+      c_d3: 4
     })
   })
   describe('memoizeDebounce', () => {

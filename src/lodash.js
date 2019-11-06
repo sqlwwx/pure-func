@@ -1,10 +1,9 @@
 const {
-  mapKeys,
-  camelCase,
-  snakeCase,
   memoize,
   debounce
 } = require('lodash')
+
+const { camelizeKeys, decamelizeKeys } = require('xcase')
 
 export const memoizeDebounce = (func, delay, resolver, options = {}) => {
   if (!resolver) {
@@ -19,6 +18,8 @@ export const memoizeDebounce = (func, delay, resolver, options = {}) => {
   }
 }
 
-export const camelCaseObject = obj => mapKeys(obj, (_, key) => camelCase(key))
+// export const camelCaseObject = obj => mapKeys(obj, (_, key) => camelCase(key))
+export const camelCaseObject = camelizeKeys
 
-export const snakeCaseObject = obj => mapKeys(obj, (_, key) => snakeCase(key))
+// export const snakeCaseObject = obj => mapKeys(obj, (_, key) => snakeCase(key))
+export const snakeCaseObject = decamelizeKeys
