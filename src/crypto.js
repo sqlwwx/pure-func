@@ -34,8 +34,8 @@ export function hmac (key, data, algorithm = 'sha256', format = 'hex') {
   ).digest(format)
 }
 
-export function base64 (str) {
-  return Buffer.from(str).toString('base64')
+export function base64 (str, encoding = 'utf8') {
+  return Buffer.from(str, encoding).toString('base64')
 }
 
 export function generateMac (usercode = randomNumberStr(12)) {
