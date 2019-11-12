@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/sqlwwx/pure-func/compare/v2.0.20...v2.1.0) (2019-11-12)
+
+
+### Bug Fixes
+
+* base64 ([e2868ae](https://github.com/sqlwwx/pure-func/commit/e2868ae))
+
+
+### Features
+
+* qetag ([0aab5dd](https://github.com/sqlwwx/pure-func/commit/0aab5dd))
+
 ### [2.0.20](https://github.com/sqlwwx/pure-func/compare/v2.0.19...v2.0.20) (2019-11-08)
 
 ### [2.0.19](https://github.com/sqlwwx/pure-func/compare/v2.0.18...v2.0.19) (2019-11-06)
