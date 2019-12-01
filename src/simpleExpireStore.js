@@ -8,7 +8,8 @@ const isNoneValue = value => Boolean(value === undefined || value === null)
 
 const simpleExpireStore = (obj = {}, timeout = 1000, checkInterval = 60000) => {
   const interval = setInterval(() => {
-    Object.entries(obj).filter(([, { expiredAt }]) => expiredAt < Date.now()).forEach(([key]) => {
+    const now = Date.now()
+    Object.entries(obj).filter(([, { expiredAt }]) => expiredAt < now).forEach(([key]) => {
       return Reflect.deleteProperty(obj, key)
     })
   }, checkInterval)
