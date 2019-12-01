@@ -56,7 +56,8 @@
     "power-assert": "^1.6.1",
     "qrcode": "^1.4.2",
     "regenerator-runtime": "^0.13.3",
-    "standard-version": "^7.0.0"
+    "standard-version": "^7.0.0",
+    "vm2": "^3.8.4"
   },
   "dependencies": {
     "core-js": "^3.4.5",
