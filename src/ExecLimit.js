@@ -1,21 +1,23 @@
 module.exports = class ExecLimit {
-  constructor () {
-    this.namespaces = Object.create(null)
+  #namespaces = Object.create(null)
+
+  get namespacesCount () {
+    return Object.keys(this.#namespaces).length
   }
 
   clear (namespace) {
     if (namespace) {
-      delete this.namespaces[namespace]
+      delete this.#namespaces[namespace]
     } else {
-      this.namespaces = Object.create(null)
+      this.#namespaces = Object.create(null)
     }
   }
 
   getHistory (namespace) {
-    if (!this.namespaces[namespace]) {
-      this.namespaces[namespace] = new Set()
+    if (!this.#namespaces[namespace]) {
+      this.#namespaces[namespace] = new Set()
     }
-    return this.namespaces[namespace]
+    return this.#namespaces[namespace]
   }
 
   isExeced (key, namespace) {

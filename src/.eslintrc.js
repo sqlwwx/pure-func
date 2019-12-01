@@ -4,5 +4,8 @@ module.exports = {
   plugins: ['you-dont-need-lodash-underscore'],
   rules: {
     'import/no-extraneous-dependencies': 'off'
+  },
+  env: {
+    node: true
   }
 }
