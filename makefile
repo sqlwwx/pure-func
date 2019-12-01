@@ -6,9 +6,8 @@ FORMATTER = $(shell node -p "require.resolve('eslint-friendly-formatter')")
 DIR ?= src
 
 install:
-	yarn install
+	yarn
 	yarn global add jsinspect
-	yarn add axios emoji-regex fast-xml-parser file-box he jimp jsqr qrcode bcrypt jsonwebtoken lodash --peer
 
 build:
 	NODE_ENV=production $(BABEL) src -d . --copy-files
