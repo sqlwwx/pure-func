@@ -59,7 +59,7 @@
     "standard-version": "^7.0.0"
   },
   "dependencies": {
-    "core-js": "3",
+    "core-js": "^3.4.5",
     "xcase": "^2.0.1"
   }
 }
