@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.2](https://github.com/sqlwwx/pure-func/compare/v3.0.1...v3.0.2) (2019-12-02)
+
+
+### Features
+
+* support template string ([8d36339](https://github.com/sqlwwx/pure-func/commit/8d36339fc4b0f4bed83271708bb5a6d6ce187bf4))
+
 ### [3.0.1](https://github.com/sqlwwx/pure-func/compare/v3.0.0...v3.0.1) (2019-12-01)
 
 
