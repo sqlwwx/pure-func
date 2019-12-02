@@ -23,4 +23,14 @@ describe('vmTemplate', () => {
     ret = await fn({ timestamp })
     assert(ret === `timestamp: ${timestamp}`)
   })
+  it('template str', async () => {
+    // eslint-disable-next-line no-template-curly-in-string
+    const fn = template('timestamp: ${data.timestamp}')
+    let timestamp = Date.now()
+    let ret = await fn({ timestamp })
+    assert(ret === `timestamp: ${timestamp}`)
+    timestamp = Date.now()
+    ret = await fn({ timestamp })
+    assert(ret === `timestamp: ${timestamp}`)
+  })
 })
