@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "prepublish": "make build",
     "commit": "commit",
     "release": "standard-version",
     "build": "babel src -d . --copy-files",
