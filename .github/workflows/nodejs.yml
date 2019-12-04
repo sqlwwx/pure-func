@@ -22,6 +22,5 @@ jobs:
         make install
         $(yarn global bin)/jsinspect src
         make test
-        cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
       env:
         CI: true
