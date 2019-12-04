@@ -20,7 +20,7 @@ jobs:
     - name: npm install, build, and test
       run: |
         make install
-        $(yarn bin)/jsinspect src
+        $(yarn global bin)/jsinspect src
         make test
         cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
       env:
