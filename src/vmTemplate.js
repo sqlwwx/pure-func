@@ -2,7 +2,7 @@ const { NodeVM } = require('vm2')
 
 export const template = (code, options = {}) => {
   const fn = new NodeVM(options).run(
-    code.startsWith('module')
+    code.includes('module.exports')
       ? code
       : `module.exports = (data) => \`${code}\``
   )
