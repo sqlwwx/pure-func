@@ -20,6 +20,8 @@ jobs:
     - name: npm install, build, and test
       run: |
         make install
+        ls /usr/local/bin
+        which jsinspect
         jsinspect src
         make test
         cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
