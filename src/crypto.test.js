@@ -2,7 +2,8 @@ const getmac = require('getmac')
 const {
   hash, sortObject, generateMac, hmac, base64,
   base64ToUrlSafe, decodeUrlSafeBase64,
-  urlSafeBase64
+  urlSafeBase64,
+  decryptData
 } = require('./crypto')
 
 /* eslint-env jest */
@@ -59,5 +60,62 @@ describe('crypto', () => {
     expect(base64('a>?')).toEqual('YT4/')
     expect(urlSafeBase64('a>?')).toEqual('YT4_')
     expect(decodeUrlSafeBase64('YT4_').toString()).toEqual('a>?')
+  })
+  describe('decryptData', () => {
+    it('wx', () => {
+      const key = 'tiihtNczf5v6AKRyjwEUhQ=='
+      const encryptedData = 'CiyLU1Aw2KjvrjMdj8YKliAjtP4gsMZM'
+      + 'QmRzooG2xrDcvSnxIMXFufNstNGTyaGS'
+      + '9uT5geRa0W4oTOb1WT7fJlAC+oNPdbB+'
+      + '3hVbJSRgv+4lGOETKUQz6OYStslQ142d'
+      + 'NCuabNPGBzlooOmB231qMM85d2/fV6Ch'
+      + 'evvXvQP8Hkue1poOFtnEtpyxVLW1zAo6'
+      + '/1Xx1COxFvrc2d7UL/lmHInNlxuacJXw'
+      + 'u0fjpXfz/YqYzBIBzD6WUfTIF9GRHpOn'
+      + '/Hz7saL8xz+W//FRAUid1OksQaQx4CMs'
+      + '8LOddcQhULW4ucetDf96JcR3g0gfRK4P'
+      + 'C7E/r7Z6xNrXd2UIeorGj5Ef7b1pJAYB'
+      + '6Y5anaHqZ9J6nKEBvB4DnNLIVWSgARns'
+      + '/8wR2SiRS7MNACwTyrGvt9ts8p12PKFd'
+      + 'lqYTopNHR1Vf7XjfhQlVsAJdNiKdYmYV'
+      + 'oKlaRv85IfVunYzO0IKXsyl7JCUjCpoG'
+      + '20f0a04COwfneQAGGwd5oa+T8yO5hzuy'
+      + 'Db/XcxxmK01EpqOyuxINew=='
+      const iv = 'r7BXXKkLb8qrSNn05n0qiA=='
+      expect(JSON.parse(decryptData(encryptedData, { iv, key })))
+        .toEqual({
+          gender: 1,
+          language: 'zh_CN',
+          nickName: 'Band',
+          openId: 'oGZUI0egBJY1zhBYw2KhdUfwVJJE',
+          city: 'Guangzhou',
+          province: 'Guangdong',
+          country: 'CN',
+          avatarUrl: 'http://wx.qlogo.cn/mmopen/vi_32/aSKcBBPpibyKNicHNTMM0qJVh8Kjgiak2AHWr8MHM4WgMEm7GFhsf8OYrySdbvAMvTsw3mo8ibKicsnfN5pRjl1p8HQ/0',
+          unionId: 'ocMvos6NjeKLIBqg5Mr9QjxrP1FA',
+          watermark: { timestamp: 1477314187, appid: 'wx4f4bc4dec97d474b' }
+        })
+    })
+    it('tt', () => {
+      const encryptedData = 'FdbghVAD4vTyopgtMGsK3OVGLR/Q3dbTlL6esHOGFEs3XEKwEMMWbTl1ZrNr2/GbPK902T+CSx/L2oFP8dqOQvlP43FSPXjBjs1JiDwyHTRkt06DTkI2CuOQRCFnyLTEvwS59bI/i6sWJFW/aNRouzqHo2zEuYI4QNk4/ZFzTYhfoe49x/0RSL3Vq/L60PidONUmRR9FoGJMoGfn2bKEogeRJj2Euj/KB8vUhuRU4ZZuMa+pN0Cvsa6Rs6tjpaVoHA9ffFH7ZPmReA1wLsCObNj+6jPwdbtjR7Z3GBe9TKm4S5zc/ogakuA7Eamu/WoC8T4YhUc+/5Cb/ehmsL7S+cLk6TYHqs+82B6irAyjEIBvqdPe5JrmD3zytX2+1qfw'
+      const iv = 'OgCZACTz0Eyk00UZrfbwWA=='
+      const key = 'McK63aWbE0nYMS/JQx0G7w=='
+      expect(Buffer.from(key, 'base64').length).toEqual(16)
+      expect(
+        JSON.parse(decryptData(encryptedData, { iv, key }))
+      ).toEqual({
+        nickName: 'wwx1991',
+        avatarUrl: 'http://sf1-ttcdn-tos.pstatp.com/img/mosaic-legacy/3793/3131589739~120x256.image',
+        gender: 0,
+        city: '',
+        province: '',
+        country: '中国',
+        language: '',
+        openId: '.PyzymPXM1iOEGNt',
+        watermark: {
+          appid: 'ttc557b3ea5a7d3ffb', timestamp: 1576073046
+        }
+      })
+    })
   })
 })
