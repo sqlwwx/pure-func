@@ -118,6 +118,7 @@ tags
 yarn.lock
 /secrets/
 /config/
+/templates/
 npm-debug.log
 !commitlint.config.js
 !babel.config.js

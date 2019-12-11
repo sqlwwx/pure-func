@@ -8,6 +8,7 @@ yarn.lock
 .travis.yml
 secrets/
 config/
+templates/
 commitlint.config.js
 lint-staged.config.js
 babel.config.js
