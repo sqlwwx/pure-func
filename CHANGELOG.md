@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.5](https://github.com/sqlwwx/pure-func/compare/v3.0.4...v3.0.5) (2019-12-11)
+
+
+### Features
+
+* add crypto.decryptData ([1ddeba0](https://github.com/sqlwwx/pure-func/commit/1ddeba05a263ceb7f5b093e8ed40ec6f2586f68e))
+
 ### [3.0.4](https://github.com/sqlwwx/pure-func/compare/v3.0.3...v3.0.4) (2019-12-04)
 
 ### [3.0.3](https://github.com/sqlwwx/pure-func/compare/v3.0.2...v3.0.3) (2019-12-04)
