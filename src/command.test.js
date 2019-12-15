@@ -32,8 +32,8 @@ describe('command', () => {
         async () => {
           return execCommand('ls notExistDir')
         }, {
+          name: 'ExecCommandError',
           message: /notExistDir/,
-          exitCode: 2,
           exitSignal: null
         }
       )

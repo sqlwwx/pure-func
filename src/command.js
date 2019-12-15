@@ -3,6 +3,7 @@ const { exec } = require('child_process')
 export class ExecCommandError extends Error {
   constructor (msg, exitCode, exitSignal) {
     super(msg)
+    this.name = 'ExecCommandError'
     this.exitSignal = exitSignal
     this.exitCode = exitCode
   }
