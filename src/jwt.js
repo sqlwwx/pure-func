@@ -1,5 +1,8 @@
 const Bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const { promisify } = require('util')
+
+const bcryptHash = promisify(Bcrypt.hash)
 
 const RECOMMENDED_ROUNDS = 12
 
@@ -56,7 +59,7 @@ const generateHash = async (password = '') => {
   if (isBcryptHash(password)) {
     throw new Error('bcrypt tried to hash another bcrypt hash')
   }
-  return Bcrypt.hashSync(password, RECOMMENDED_ROUNDS)
+  return bcryptHash(password, RECOMMENDED_ROUNDS)
 }
 
 module.exports = {
