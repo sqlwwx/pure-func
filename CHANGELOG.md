@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.1.0](https://github.com/sqlwwx/x-lab/compare/v3.0.6...v3.1.0) (2019-12-19)
+
+
+### Features
+
+* calc ([3eda2c5](https://github.com/sqlwwx/x-lab/commit/3eda2c55d78064c7e2551f74ba5222d95dc9bf1e))
+
 ### [3.0.6](https://github.com/sqlwwx/pure-func/compare/v3.0.5...v3.0.6) (2019-12-11)
 
 ### [3.0.5](https://github.com/sqlwwx/pure-func/compare/v3.0.4...v3.0.5) (2019-12-11)
