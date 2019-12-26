@@ -48,26 +48,30 @@ export const mul = (...nums) => {
     return leftValue / (10 ** baseNum)
   })
 }
+
+const reduceNums = (operate, ...nums) => {
+  return nums.reduce((ret, cur) => {
+    if (!cur) { return ret }
+    const baseNum = (10 ** Math.max(digitLength(ret), digitLength(cur)))
+    if (operate === '-') {
+      return (mul(ret, baseNum) - mul(cur, baseNum)) / baseNum
+    }
+    return (mul(ret, baseNum) + mul(cur, baseNum)) / baseNum
+  })
+}
+
 /**
  * 精确加法
  */
 export const add = (...nums) => {
-  return nums.reduce((ret, cur) => {
-    if (!cur) { return ret }
-    const baseNum = (10 ** Math.max(digitLength(ret), digitLength(cur)))
-    return (mul(ret, baseNum) + mul(cur, baseNum)) / baseNum
-  })
+  return reduceNums('+', ...nums)
 }
 
 /**
  * 精确减法
  */
 export const sub = (...nums) => {
-  return nums.reduce((ret, cur) => {
-    if (!cur) { return ret }
-    const baseNum = (10 ** Math.max(digitLength(ret), digitLength(cur)))
-    return (mul(ret, baseNum) - mul(cur, baseNum)) / baseNum
-  })
+  return reduceNums('-', ...nums)
 }
 
 /**
