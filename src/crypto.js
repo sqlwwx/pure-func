@@ -59,6 +59,15 @@ export const urlSafeBase64 = str => base64ToUrlSafe(
 
 export const decodeUrlSafeBase64 = str => Buffer.from(str.replace(/_/g, '/').replace(/-/g, '+'), 'base64')
 
+export const encryptData = (data, options) => {
+  const { algorithm = 'aes-128-cbc', key, iv } = options
+  const cipher = crypto.createCipheriv(algorithm, key, iv)
+  let crypted = cipher.update(data, 'utf8', 'binary')
+  crypted += cipher.final('binary')
+  crypted = Buffer.from(crypted, 'binary').toString('base64')
+  return crypted
+}
+
 export const decryptData = (encryptedData, options) => {
   const { algorithm = 'aes-128-cbc', key, iv } = options
   const decipher = crypto
