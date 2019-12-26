@@ -1,8 +1,10 @@
 const getmac = require('getmac')
+const crypto = require('crypto')
 const {
   hash, sortObject, generateMac, hmac, base64,
   base64ToUrlSafe, decodeUrlSafeBase64,
   urlSafeBase64,
+  encryptData,
   decryptData
 } = require('./crypto')
 
@@ -117,5 +119,11 @@ describe('crypto', () => {
         }
       })
     })
+  })
+  it('encryptData', () => {
+    const key = crypto.randomBytes(16)
+    const iv = crypto.randomBytes(16)
+    const encryptedData = encryptData('secret', { key, iv })
+    expect(decryptData(encryptedData, { key, iv })).toEqual('secret')
   })
 })
