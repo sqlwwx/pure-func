@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.1](https://github.com/sqlwwx/pure-func/compare/v3.1.0...v3.1.1) (2019-12-26)
+
+
+### Features
+
+* encryptData ([87ebdb8](https://github.com/sqlwwx/pure-func/commit/87ebdb842bd18d00e7bd905c52dafefd5c8f2faf))
+
 ## [3.1.0](https://github.com/sqlwwx/x-lab/compare/v3.0.6...v3.1.0) (2019-12-19)
 
 
