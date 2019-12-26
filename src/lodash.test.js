@@ -64,7 +64,7 @@ describe('lodash', () => {
       test2('1')
       test2('1')
       expect(logs2.length).toEqual(0)
-      await sleep(1000)
+      await sleep(1100)
       expect(logs2.length).toEqual(1)
       expect(logs[0]).toEqual(1)
       const test3 = memoizeDebounce(i => {
