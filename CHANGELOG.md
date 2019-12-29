@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.2](https://github.com/sqlwwx/x-lab/compare/v3.1.1...v3.1.2) (2019-12-29)
+
+
+### Features
+
+* execLimit return ret ([70fba2c](https://github.com/sqlwwx/x-lab/commit/70fba2c746cdc9248ffa3b2213d6e1c8a13201c2))
+
 ### [3.1.1](https://github.com/sqlwwx/pure-func/compare/v3.1.0...v3.1.1) (2019-12-26)
 
 
