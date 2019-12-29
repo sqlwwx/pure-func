@@ -15,25 +15,19 @@ module.exports = class ExecLimit {
 
   getHistory (namespace) {
     if (!this.#namespaces[namespace]) {
-      this.#namespaces[namespace] = new Set()
+      this.#namespaces[namespace] = new Map()
     }
     return this.#namespaces[namespace]
   }
 
-  isExeced (key, namespace) {
+  async exec (key, fn, namespace = 'default') {
     const history = this.getHistory(namespace)
     if (history.has(key)) {
-      return true
+      return history.get(key)
     }
     history.clear()
-    history.add(key)
-    return false
-  }
-
-  async exec (key, fn, namespace = 'default') {
-    if (!this.isExeced(key, namespace)) {
-      return fn()
-    }
-    return Promise.resolve()
+    const ret = fn()
+    history.set(key, ret)
+    return ret
   }
 }
