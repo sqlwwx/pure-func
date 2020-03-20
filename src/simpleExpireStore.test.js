@@ -36,4 +36,27 @@ describe('simpleExpireStore', () => {
     store.clearInterval()
     expect(source).not.toHaveProperty('c')
   })
+  it('getAsync', async () => {
+    const source = {}
+    const store = simpleExpireStore(source, 200, 2000)
+    expect(
+      await store.getAsync('test', async () => {
+        return 'test'
+      })
+    ).toEqual('test')
+    expect(store.test).toEqual('test')
+    await sleep(200)
+    expect(store.test).toEqual(undefined)
+    expect(store.test2).toEqual(undefined)
+    store.test2 = 'test2'
+    expect(store.test2).toEqual('test2')
+    expect(
+      await store.getAsync('test2', async () => {
+        return 'test22'
+      })
+    ).toEqual('test2')
+    expect(store.test2).toEqual('test2')
+    await sleep(200)
+    expect(store.test2).toEqual(undefined)
+  })
 })

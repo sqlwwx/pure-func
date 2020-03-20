@@ -18,7 +18,7 @@ const simpleExpireStore = (obj = {}, timeout = 1000, checkInterval = 60000) => {
       clearInterval(interval)
     }
   })
-  return new Proxy(obj, {
+  const proxy = new Proxy(obj, {
     get (target, name) {
       const value = target[name]
       // no cache for function
@@ -47,6 +47,17 @@ const simpleExpireStore = (obj = {}, timeout = 1000, checkInterval = 60000) => {
       })
     }
   })
+  Object.defineProperty(proxy, 'getAsync', {
+    async value (name, fn) {
+      let value = this[name]
+      if (value === undefined) {
+        value = await fn()
+      }
+      this[name] = value
+      return value
+    }
+  })
+  return proxy
 }
 
 module.exports = simpleExpireStore
