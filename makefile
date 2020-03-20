@@ -27,4 +27,10 @@ dev:
 publish: build
 	npm publish
 
+RELEASES = patch minor major
+.PHONY: $(RELEASES)
+$(RELEASES):
+	$(PWD)/node_modules/.bin/standard-version --release-as $@
+	git push --follow-tags origin master
+
 .PHONY: test lint dev build watch publish install
