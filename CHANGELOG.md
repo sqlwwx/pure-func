@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.3](https://github.com/sqlwwx/pure-func/compare/v3.1.2...v3.1.3) (2020-03-20)
+
+
+### Features
+
+* simpleExpireStore getAsync ([cc1d7df](https://github.com/sqlwwx/pure-func/commit/cc1d7dfe0c6d1fdd5fa9ea6964c4ea3afb5bf779))
+
 ### [3.1.2](https://github.com/sqlwwx/x-lab/compare/v3.1.1...v3.1.2) (2019-12-29)
 
 
