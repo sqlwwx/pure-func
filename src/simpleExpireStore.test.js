@@ -58,5 +58,6 @@ describe('simpleExpireStore', () => {
     expect(store.test2).toEqual('test2')
     await sleep(200)
     expect(store.test2).toEqual(undefined)
+    store.clearInterval()
   })
 })
