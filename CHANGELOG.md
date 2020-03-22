@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.4](https://github.com/sqlwwx/x-lab/compare/v3.1.3...v3.1.4) (2020-03-22)
+
+
+### Features
+
+* simpleExpireStore getAsync support keepExpire ([1f5c62c](https://github.com/sqlwwx/x-lab/commit/1f5c62c4a2ad09f6a91aec615600ae5fb7888bd4))
+
+
+### Bug Fixes
+
+* add lost depend got ([929d39d](https://github.com/sqlwwx/x-lab/commit/929d39d3fe71119dd5d8f806ab784fec16b71767))
+* test exit ([d4b22f1](https://github.com/sqlwwx/x-lab/commit/d4b22f18577c85798573346fea25d48540aa31ee))
+
 ### [3.1.3](https://github.com/sqlwwx/pure-func/compare/v3.1.2...v3.1.3) (2020-03-20)
 
 
