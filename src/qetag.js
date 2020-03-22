@@ -39,7 +39,8 @@ export const getEtag = buffer => {
   }
   const sha1String = []
   let blockCount = 0
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
+    // eslint-disable-next-line default-case
     switch (mode) {
       case 'buffer':
         blockCount = Math.ceil(checkedBuffer.length / blockSize)
@@ -68,8 +69,6 @@ export const getEtag = buffer => {
           resolve(calcEtag(sha1String, blockCount))
         })
         break
-      default:
-        reject(new Error(`not support ${mode}`))
     }
   })
 }

@@ -19,7 +19,9 @@ lint:
 	$(LINT) --format $(FORMATTER) --fix src/*.js
 
 test: lint
+	dd if=/dev/zero of=/tmp/qetag_100 bs=1M count=100
 	$(JEST) --env=node --coverage --runInBand $(DIR)
+	rm -rf /tmp/qetag_100
 
 dev:
 	$(JEST) -o --watch --runInBand --forceExit $(DIR)
