@@ -13,11 +13,6 @@ const simpleExpireStore = (obj = {}, timeout = 1000, checkInterval = 60000) => {
       return Reflect.deleteProperty(obj, key)
     })
   }, checkInterval)
-  Object.assign(obj, {
-    clearInterval: () => {
-      clearInterval(interval)
-    }
-  })
   const proxy = new Proxy(obj, {
     get (target, name) {
       const value = target[name]
@@ -47,14 +42,32 @@ const simpleExpireStore = (obj = {}, timeout = 1000, checkInterval = 60000) => {
       })
     }
   })
-  Object.defineProperty(proxy, 'getAsync', {
-    async value (name, fn) {
-      let value = this[name]
-      if (value === undefined) {
-        value = await fn()
+  Object.defineProperties(proxy, {
+    clearInterval: {
+      value () {
+        clearInterval(interval)
       }
-      this[name] = value
-      return value
+    },
+    getAsync: {
+      value (name, fn, options = {}) {
+        const value = this[name]
+        if (value !== undefined) {
+          if (options.keepExpire) {
+            this[name] = {
+              value,
+              expiredAt: Date.now() + options.keepExpire
+            }
+          }
+          return value
+        }
+        if (fn) {
+          this[name] = fn().catch(() => {
+            this[name] = undefined
+          })
+          return this[name]
+        }
+        return Promise.resolve()
+      }
     }
   })
   return proxy
