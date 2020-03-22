@@ -1,6 +1,6 @@
-LINT = $(PWD)/node_modules/.bin/eslint
-JEST = $(PWD)/node_modules/.bin/jest
-BABEL = $(PWD)/node_modules/.bin/babel
+LINT = npx eslint
+JEST = npx jest
+BABEL = npx babel
 FORMATTER = $(shell node -p "require.resolve('eslint-friendly-formatter')")
 
 DIR ?= src
