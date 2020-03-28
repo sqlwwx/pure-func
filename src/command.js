@@ -28,7 +28,7 @@ export const execCommand = (command, options = {}) => {
     })
     childProcess.stdout.on('data', data => {
       if (onData) {
-        onData(data)
+        onData(data, command)
       } else {
         results += data
       }
