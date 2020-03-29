@@ -16,7 +16,7 @@ export const execCommand = (command, options = {}) => {
     let errorStr = ''
     const childProcess = exec(command, {
       maxBuffer: 1024 * 1024,
-      cwd: __dirname,
+      cwd: process.cwd(),
       ...execOptions
     })
     childProcess.on('exit', (code, signal) => {
