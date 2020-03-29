@@ -59,7 +59,7 @@
     "qrcode": "*",
     "regenerator-runtime": "*",
     "standard-version": "*",
-    "vm2": "*"
+    "vm2": ">=3.9.1"
   },
   "dependencies": {
     "core-js": "^3",
