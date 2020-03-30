@@ -53,7 +53,7 @@
     "jimp": "*",
     "jsonwebtoken": "*",
     "jsqr": "*",
-    "lint-staged": "*",
+    "lint-staged": ">=10.1.0",
     "lodash": "*",
     "power-assert": "*",
     "qrcode": "*",
