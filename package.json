@@ -50,7 +50,7 @@
     "he": "*",
     "husky": "*",
     "jest": "*",
-    "jimp": "*",
+    "jimp": ">=0.10.1",
     "jsonwebtoken": "*",
     "jsqr": "*",
     "lint-staged": "*",
