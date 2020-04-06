@@ -1,6 +1,10 @@
 const crypto = require('crypto')
 const { randomNumberStr } = require('./number')
 
+export const fixedEncodeURIComponent = str => encodeURIComponent(str)
+  .replace(/[!'()]/g, escape)
+  .replace(/\*/g, '%2A')
+
 export const sortObject = o => {
   if (Array.isArray(o)) { return o.sort() }
   if (!o || typeof o !== 'object') {

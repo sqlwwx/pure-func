@@ -1,11 +1,13 @@
 const getmac = require('getmac')
 const crypto = require('crypto')
+const assert = require('assert')
 const {
   hash, sortObject, generateMac, hmac, base64,
   base64ToUrlSafe, decodeUrlSafeBase64,
   urlSafeBase64,
   encryptData,
-  decryptData
+  decryptData,
+  fixedEncodeURIComponent
 } = require('./crypto')
 
 /* eslint-env jest */
@@ -125,5 +127,8 @@ describe('crypto', () => {
     const iv = crypto.randomBytes(16)
     const encryptedData = encryptData('secret', { key, iv })
     expect(decryptData(encryptedData, { key, iv })).toEqual('secret')
+  })
+  it('fixedEncodeURIComponent', () => {
+    assert(fixedEncodeURIComponent('!\'()*') === '%21%27%28%29%2A')
   })
 })
