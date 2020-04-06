@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.7](https://github.com/sqlwwx/x-lab/compare/v3.1.6...v3.1.7) (2020-04-06)
+
+
+### Features
+
+* **crypot:** fixedEncodeURIComponent ([e3384e3](https://github.com/sqlwwx/x-lab/commit/e3384e32408059622211758e01afe0da8a0de965))
+
+
+### Bug Fixes
+
+* simpleExpireStore getAsync should reject error ([d997bee](https://github.com/sqlwwx/x-lab/commit/d997bee5b41c522cdfb030adeba500441a88e9b3))
+
 ### [3.1.6](https://github.com/sqlwwx/x-lab/compare/v3.1.5...v3.1.6) (2020-03-29)
 
 ### [3.1.5](https://github.com/sqlwwx/x-lab/compare/v3.1.4...v3.1.5) (2020-03-28)
