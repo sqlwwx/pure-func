@@ -3,6 +3,13 @@ module.exports = api => {
     api.cache(true)
   }
   return {
+    env: {
+      test: {
+        presets: [
+          'power-assert'
+        ]
+      }
+    },
     presets: [
       ['@babel/preset-env', {
         targets: { node: '12' },
