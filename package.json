@@ -60,10 +60,10 @@
     "qrcode": "*",
     "regenerator-runtime": "*",
     "standard-version": "*",
-    "vm2": "*"
+    "vm2": "*",
+    "xcase": "^2"
   },
   "dependencies": {
-    "core-js": "^3",
-    "xcase": "^2"
+    "core-js": "^3"
   }
 }

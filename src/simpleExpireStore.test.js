@@ -1,3 +1,4 @@
+const assert = require('assert')
 const { sleep } = require('./promise')
 const simpleExpireStore = require('./simpleExpireStore')
 
@@ -58,9 +59,13 @@ describe('simpleExpireStore', () => {
     expect(await store.getAsync('test2')).toEqual('test2')
     await sleep(200)
     expect(await store.getAsync('test2')).toEqual(undefined)
-    expect(await store.getAsync('testError', async () => {
-      throw new Error('error')
-    })).toEqual(undefined)
+    assert(
+      (
+        await store.getAsync('testError', async () => {
+          throw new Error('testError')
+        }).catch(err => err)
+      ).message === 'testError'
+    )
     expect(await store.getAsync('testError', async () => {
       return 1
     })).toEqual(1)

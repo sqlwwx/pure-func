@@ -61,8 +61,9 @@ const simpleExpireStore = (obj = {}, timeout = 1000, checkInterval = 60000) => {
           return value
         }
         if (fn) {
-          this[name] = fn().catch(() => {
+          this[name] = fn().catch(err => {
             this[name] = undefined
+            throw err
           })
           return this[name]
         }
