@@ -64,6 +64,6 @@
     "xcase": "^2"
   },
   "dependencies": {
-    "core-js": "^3"
+    "core-js": "^3.6.5"
   }
 }
