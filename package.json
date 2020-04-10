@@ -49,7 +49,7 @@
     "getmac": "*",
     "got": "^10",
     "he": "*",
-    "husky": "*",
+    "husky": "4.2.4",
     "jest": "*",
     "jimp": "*",
     "jsonwebtoken": "*",
