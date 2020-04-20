@@ -51,7 +51,7 @@
     "he": "*",
     "husky": "*",
     "jest": "*",
-    "jimp": "*",
+    "jimp": ">=0.10.3",
     "jsonwebtoken": "*",
     "jsqr": "*",
     "lint-staged": "*",
