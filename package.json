@@ -47,7 +47,7 @@
     "fast-xml-parser": "*",
     "file-box": "*",
     "getmac": "*",
-    "got": "^10",
+    "got": "^11.0.0",
     "he": "*",
     "husky": "*",
     "jest": "*",
