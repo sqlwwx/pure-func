@@ -38,7 +38,7 @@
     "babel-plugin-import": "*",
     "babel-preset-power-assert": "*",
     "bcrypt": "*",
-    "coveralls": "*",
+    "coveralls": ">=3.0.14",
     "emoji-regex": "*",
     "eslint": "*",
     "eslint-config-standard-airbnb-base": "*",
