@@ -60,7 +60,7 @@
     "qrcode": "*",
     "regenerator-runtime": "*",
     "standard-version": "*",
-    "vm2": "*",
+    "vm2": ">=3.9.2",
     "xcase": "^2"
   },
   "dependencies": {
