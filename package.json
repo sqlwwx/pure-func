@@ -53,7 +53,7 @@
     "jest": "*",
     "jimp": "*",
     "jsonwebtoken": "*",
-    "jsqr": "*",
+    "jsqr": ">=1.3.1",
     "lint-staged": "*",
     "lodash": "*",
     "power-assert": "*",
