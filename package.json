@@ -59,7 +59,7 @@
     "power-assert": "*",
     "qrcode": "*",
     "regenerator-runtime": "*",
-    "standard-version": "*",
+    "standard-version": ">=8.0.0",
     "vm2": "*",
     "xcase": "^2"
   },
