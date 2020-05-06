@@ -46,7 +46,7 @@
     "eslint-plugin-you-dont-need-lodash-underscore": "*",
     "fast-xml-parser": "*",
     "file-box": "*",
-    "getmac": "*",
+    "getmac": ">=5.2.0",
     "got": "^11.0.0",
     "he": "*",
     "husky": "*",
