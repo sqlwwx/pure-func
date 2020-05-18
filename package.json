@@ -44,7 +44,7 @@
     "eslint-config-standard-airbnb-base": "*",
     "eslint-friendly-formatter": "*",
     "eslint-plugin-you-dont-need-lodash-underscore": "*",
-    "fast-xml-parser": "*",
+    "fast-xml-parser": ">=3.17.0",
     "file-box": "*",
     "getmac": "*",
     "got": "^11.0.0",
