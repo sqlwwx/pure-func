@@ -30,7 +30,7 @@
     "@babel/preset-env": "*",
     "@babel/runtime": "*",
     "@commitlint/cli": ">=8.3.5",
-    "@commitlint/config-conventional": "*",
+    "@commitlint/config-conventional": ">=8.3.4",
     "@commitlint/prompt-cli": "*",
     "axios": "*",
     "babel-eslint": "*",
