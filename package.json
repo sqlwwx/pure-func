@@ -21,7 +21,7 @@
   "homepage": "https://github.com/sqlwwx/pure-func#readme",
   "devDependencies": {
     "@babel/cli": ">=7.10.1",
-    "@babel/core": "*",
+    "@babel/core": ">=7.10.2",
     "@babel/plugin-proposal-class-properties": "*",
     "@babel/plugin-proposal-decorators": "*",
     "@babel/plugin-proposal-export-default-from": "*",
