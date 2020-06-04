@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.8](https://github.com/sqlwwx/x-lab/compare/v3.1.7...v3.1.8) (2020-06-04)
+
+
+### Features
+
+* simpleExpireStore add origin ([9ee7aa9](https://github.com/sqlwwx/x-lab/commit/9ee7aa9995c6916098575fce3072c776b7a55a18))
+
 ### [3.1.7](https://github.com/sqlwwx/x-lab/compare/v3.1.6...v3.1.7) (2020-04-06)
 
 
