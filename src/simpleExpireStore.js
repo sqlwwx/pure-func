@@ -43,6 +43,11 @@ const simpleExpireStore = (obj = {}, timeout = 1000, checkInterval = 60000) => {
     }
   })
   Object.defineProperties(proxy, {
+    origin: {
+      value () {
+        return obj
+      }
+    },
     clearInterval: {
       value () {
         clearInterval(interval)

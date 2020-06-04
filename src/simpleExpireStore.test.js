@@ -9,6 +9,7 @@ describe('simpleExpireStore', () => {
   it('should success', async () => {
     const source = {}
     const store = simpleExpireStore(source, 200, 2000)
+    assert(store.origin() === source)
     store.a = 1
     store.b = false
     store.c = true
