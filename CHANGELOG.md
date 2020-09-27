@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.9](https://github.com/sqlwwx/x-lab/compare/v3.1.8...v3.1.9) (2020-09-27)
+
+
+### Features
+
+* **vm-templatel:** with filename ([baaee5d](https://github.com/sqlwwx/x-lab/commit/baaee5dcbe4ee293a94e11772de70c79199237f3))
+
 ### [3.1.8](https://github.com/sqlwwx/x-lab/compare/v3.1.7...v3.1.8) (2020-06-04)
 
 
