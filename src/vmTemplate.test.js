@@ -72,4 +72,12 @@ describe('vmTemplate', () => {
     [in1][in2][in3][in4] concat=n=4:v=1:a=0 [v];
     [0:a][1:a] amix=inputs=2 [a]'   -map '[v]' -map '[a]' -c:v libx264 -pix_fmt yuv420p -c:a aac -t 30 video/3_2019_11_15_test4.mp4`)
   })
+  it('error', async () => {
+    const filename = `${Date.now().toString(36)}.js`
+    const fn = template('module.exports = async (ctx) => { throw new Error("test") }', {}, filename)
+    let err
+    await fn().catch(e => { err = e })
+    assert(err)
+    assert(err.stack.includes(filename))
+  })
 })
