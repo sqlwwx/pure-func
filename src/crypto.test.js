@@ -1,13 +1,15 @@
 const getmac = require('getmac')
 const crypto = require('crypto')
-const assert = require('assert')
+const assert = require('power-assert')
+const path = require('path')
 const {
   hash, sortObject, generateMac, hmac, base64,
   base64ToUrlSafe, decodeUrlSafeBase64,
   urlSafeBase64,
   encryptData,
   decryptData,
-  fixedEncodeURIComponent
+  fixedEncodeURIComponent,
+  md5sum
 } = require('./crypto')
 
 /* eslint-env jest */
@@ -130,5 +132,17 @@ describe('crypto', () => {
   })
   it('fixedEncodeURIComponent', () => {
     assert(fixedEncodeURIComponent('!\'()*') === '%21%27%28%29%2A')
+  })
+  it('md5sum', async () => {
+    assert(await md5sum(path.join(__dirname, 'config/test')) === '7e5b152fcf63f8dab71a695d1dbe01fa')
+    await assert.rejects(
+      async () => {
+        return md5sum(path.join(__dirname, 'config/notExist'))
+      },
+      err => {
+        assert(err.message.startsWith('ENOENT: no such file or directory'))
+        return true
+      }
+    )
   })
 })

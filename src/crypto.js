@@ -1,4 +1,5 @@
 const crypto = require('crypto')
+const fs = require('fs')
 const { randomNumberStr } = require('./number')
 
 export const fixedEncodeURIComponent = str => encodeURIComponent(str)
@@ -87,4 +88,18 @@ export const decryptData = (encryptedData, options) => {
     'utf8'
   )
   return decrypted + decipher.final('utf8')
+}
+
+export const md5sum = filePath => {
+  return new Promise((resolve, reject) => {
+    const sum = crypto.createHash('md5')
+    const stream = fs.createReadStream(filePath)
+    stream.on('data', chunk => {
+      sum.update(chunk)
+    })
+    stream.on('error', reject)
+    stream.on('end', () => {
+      resolve(sum.digest('hex'))
+    })
+  })
 }
