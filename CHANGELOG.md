@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.2.0](https://github.com/sqlwwx/x-lab/compare/v3.1.9...v3.2.0) (2021-04-20)
+
+
+### Features
+
+* add crypto.md5sum ([b211739](https://github.com/sqlwwx/x-lab/commit/b21173990b4f9f4b4b68c715dadffcdfa773079f))
+
 ### [3.1.9](https://github.com/sqlwwx/x-lab/compare/v3.1.8...v3.1.9) (2020-09-27)
 
 
