@@ -32,10 +32,6 @@ jobs:
       - uses: pnpm/action-setup@v2.0.1
         with:
           version: 6.9.1
-          run_install: |
-            - recursive: true
-              args: [--frozen-lockfile, --strict-peer-dependencies]
-            - args: [--global, eslint jest babel jsinspect]
 
       - name: npm install, build, and test
         run: |
