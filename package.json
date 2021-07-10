@@ -22,6 +22,7 @@
   "devDependencies": {
     "@babel/cli": "*",
     "@babel/core": "*",
+    "@babel/eslint-parser": "*",
     "@babel/plugin-proposal-class-properties": "*",
     "@babel/plugin-proposal-decorators": "*",
     "@babel/plugin-proposal-export-default-from": "*",
@@ -33,7 +34,6 @@
     "@commitlint/config-conventional": "*",
     "@commitlint/prompt-cli": "*",
     "axios": "*",
-    "babel-eslint": "*",
     "babel-jest": "*",
     "babel-plugin-import": "*",
     "babel-preset-power-assert": "*",
@@ -61,9 +61,9 @@
     "regenerator-runtime": "*",
     "standard-version": "*",
     "vm2": "*",
-    "xcase": "^2"
+    "xcase": "^2.0.1"
   },
   "dependencies": {
-    "core-js": "^3"
+    "core-js": "^3.15.2"
   }
 }

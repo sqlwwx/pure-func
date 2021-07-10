@@ -6,8 +6,8 @@ FORMATTER = $(shell node -p "require.resolve('eslint-friendly-formatter')")
 DIR ?= src
 
 install:
-	yarn
-	yarn global add jsinspect
+	pnpm i
+	pnpm i -g jsinspect
 
 build:
 	NODE_ENV=production $(BABEL) src -d . --copy-files

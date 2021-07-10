@@ -125,3 +125,5 @@ npm-debug.log
 !jest.config.js
 !.eslintrc.js
 !.huskyrc.js
+.npmrc
+pnpm-lock.yaml

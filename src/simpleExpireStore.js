@@ -55,15 +55,15 @@ const simpleExpireStore = (obj = {}, timeout = 1000, checkInterval = 60000) => {
     },
     getAsync: {
       value (name, fn, options = {}) {
-        const value = this[name]
-        if (value !== undefined) {
-          if (options.keepExpire) {
-            this[name] = {
-              value,
-              expiredAt: Date.now() + options.keepExpire
+        const info = obj[name]
+        if (info && info.value !== undefined) {
+          const now = Date.now()
+          if (info.expiredAt > now) {
+            if (options.keepExpire) {
+              info.expiredAt = now + options.keepExpire
             }
+            return info.value
           }
-          return value
         }
         if (fn) {
           this[name] = fn().catch(err => {
