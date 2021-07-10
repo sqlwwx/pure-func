@@ -37,10 +37,10 @@ jobs:
               args: [--frozen-lockfile, --strict-peer-dependencies]
             - args: [--global, eslint jest babel jsinspect]
 
-    - name: npm install, build, and test
-      run: |
-        make install
-        $(yarn global bin)/jsinspect src
-        make test
-      env:
-        CI: true
+      - name: npm install, build, and test
+        run: |
+          make install
+          pnpx jsinspect src
+          make test
+        env:
+          CI: true
