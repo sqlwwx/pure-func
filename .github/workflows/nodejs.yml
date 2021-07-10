@@ -36,6 +36,7 @@ jobs:
       - name: npm install, build, and test
         run: |
           make install
+          make build
           pnpx jsinspect src
           make test
         env:
