@@ -54,9 +54,10 @@ const simpleExpireStore = (obj = {}, timeout = 1000, checkInterval = 60000) => {
       }
     },
     getAsync: {
+      // eslint-disable-next-line consistent-return
       value (name, fn, options = {}) {
         const info = obj[name]
-        if (info && info.value !== undefined) {
+        if (info) {
           const now = Date.now()
           if (info.expiredAt > now) {
             if (options.keepExpire) {
@@ -72,7 +73,6 @@ const simpleExpireStore = (obj = {}, timeout = 1000, checkInterval = 60000) => {
           })
           return this[name]
         }
-        return Promise.resolve()
       }
     }
   })

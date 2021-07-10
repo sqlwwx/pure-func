@@ -16,6 +16,9 @@ describe('simpleExpireStore', () => {
     store.d = { value: false, expiredAt: Date.now() + 200 }
     store.e = false
     store.f = 0
+    store.g = { value: false, expiredAt: '111' }
+    expect(store.g.value).toEqual(false)
+    expect(store.g.expiredAt).toEqual('111')
     expect(store.e).toEqual(false)
     expect(store.f).toEqual(0)
     store.e = undefined
@@ -67,6 +70,7 @@ describe('simpleExpireStore', () => {
         }).catch(err => err)
       ).message === 'testError'
     )
+    expect(await store.getAsync('testError')).toEqual(undefined)
     expect(await store.getAsync('testError', async () => {
       return 1
     })).toEqual(1)
@@ -76,7 +80,7 @@ describe('simpleExpireStore', () => {
     store.clearInterval()
   })
   it('getAsync keepExpire', async () => {
-    const store = simpleExpireStore({}, 200, 2000)
+    const store = simpleExpireStore({}, 200)
     expect(
       await store.getAsync('testKeepExpire', async () => {
         return 'testKeepExpire'
@@ -89,6 +93,15 @@ describe('simpleExpireStore', () => {
     expect(await store.getAsync('testKeepExpire')).toEqual('testKeepExpire')
     await sleep(600)
     expect(await store.getAsync('testKeepExpire')).toEqual(undefined)
+    store.clearInterval()
+  })
+  it('other', async () => {
+    const store = simpleExpireStore()
+    store.a = 1
+    await sleep(600)
+    assert(store.a === 1)
+    await sleep(600)
+    assert(store.a === undefined)
     store.clearInterval()
   })
 })

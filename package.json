@@ -8,7 +8,7 @@
     "commit": "commit",
     "release": "standard-version",
     "build": "babel src -d . --copy-files",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "sqlwwx <wwx_2012@live.com> (http://wiki.lab.wuweixing.com)",
   "engines": {

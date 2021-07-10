@@ -1,6 +1,7 @@
 const adapterHttp = require('axios/lib/adapters/http')
 const { encode, decodeFromBase64 } = require('./qrcode')
 const axios = require('./axios')
+const { sleep } = require('./promise')
 
 axios.defaults.adapter = adapterHttp
 
@@ -38,12 +39,14 @@ describe('qrcode', () => {
       expect(
         decodeFromBase64('iVBORw0KGgoAAAANSUhEUgAAAMgAAADIAQMAAACXljzdAAAABlBMVEX')
       ).rejects.toHaveProperty('code', 'InvalidQrcodeBuffer')
+      await sleep(300)
     })
     it('missingFinderPatternsUrl', async () => {
       const base64 = await axios.loadBase64(missingFinderPatternsUrl)
       expect(
         decodeFromBase64(base64)
       ).rejects.toHaveProperty('message', 'DecodeQrcodeFail')
+      await sleep(300)
     })
   })
   it('decodeBase64 missing-finder-patterns.png', async () => {
@@ -52,5 +55,6 @@ describe('qrcode', () => {
         await axios.loadBase64(missingFinderPatternsUrl)
       )
     ).rejects.toHaveProperty('message', 'DecodeQrcodeFail')
+    await sleep(300)
   })
 })

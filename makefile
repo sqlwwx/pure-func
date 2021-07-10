@@ -20,7 +20,7 @@ lint:
 
 test: lint
 	dd if=/dev/zero of=/tmp/qetag_100 bs=1M count=100
-	$(JEST) --env=node --coverage --runInBand $(DIR)
+	$(JEST) --silent --env=node --coverage $(DIR)
 	rm -rf /tmp/qetag_100
 
 dev:
