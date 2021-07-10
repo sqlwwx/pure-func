@@ -50,7 +50,7 @@ describe('simpleExpireStore', () => {
       })
     ).toEqual('test')
     expect(await store.getAsync('test')).toEqual('test')
-    await sleep(200)
+    await sleep(210)
     expect(await store.getAsync('test')).toEqual(undefined)
     expect(await store.getAsync('test2')).toEqual(undefined)
     store.test2 = Promise.resolve('test2')
