@@ -4,7 +4,13 @@ node_js:
   - 12
 git:
   depth: 3
-cache: yarn
+cache:
+  npm: false
+  directories:
+    - "~/.pnpm-store"
+before_install:
+  - curl -f https://get.pnpm.io/v6.7.js | node - add --global pnpm@6
+  - pnpm config set store-dir ~/.pnpm-store
 install:
   - make install
 script:
