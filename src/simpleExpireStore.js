@@ -25,7 +25,7 @@ const simpleExpireStore = (obj = {}, timeout = 1000, checkInterval = 60000) => {
       }
       const now = Date.now()
       if (info.reloadAt && info.reloadAt < now) {
-        proxy.reload(name, 5, { now, info })
+        info.asyncValue = proxy.reload(name, 5, { now, info })
       }
       if (info.expiredAt < now) {
         Reflect.deleteProperty(target, name)
@@ -65,7 +65,9 @@ const simpleExpireStore = (obj = {}, timeout = 1000, checkInterval = 60000) => {
           // eslint-disable-next-line no-param-reassign
           obj[name] = {
             expiredAt: Number.MAX_SAFE_INTEGER,
-            reloadAt: Date.now() + timeout,
+            reloadAt: Date.now() + (options.timeout || timeout),
+            asyncValue: Promise.resolve(value),
+            timeout: options.timeout || timeout,
             loadFn,
             value
           }
@@ -82,7 +84,7 @@ const simpleExpireStore = (obj = {}, timeout = 1000, checkInterval = 60000) => {
       async value (name, count = 1, options = {}) {
         const { now = Date.now(), info = obj[name] } = options
         try {
-          info.reloadAt = now + timeout
+          info.reloadAt = now + info.timeout
           info.value = await info.loadFn()
         } catch (err) {
           if (count <= 0) {
@@ -101,6 +103,12 @@ const simpleExpireStore = (obj = {}, timeout = 1000, checkInterval = 60000) => {
         if (info) {
           const now = Date.now()
           if (info.expiredAt > now) {
+            if (info.reloadAt) {
+              if (info.reloadAt < now) {
+                info.asyncValue = proxy.reload(name, options.retry || 5, options)
+              }
+              return info.asyncValue
+            }
             if (options.keepExpire) {
               info.expiredAt = now + options.keepExpire
               if (fn) {

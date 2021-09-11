@@ -104,7 +104,7 @@ describe('simpleExpireStore', () => {
     assert(store.a === undefined)
     store.clearInterval()
   })
-  it('register', async () => {
+  it('register sync', async () => {
     const store = simpleExpireStore({}, 500)
     const value1 = await store.register('random', async () => {
       const v = Math.floor(Math.random() * 10000)
@@ -133,6 +133,32 @@ describe('simpleExpireStore', () => {
     assert(value1 !== store.random)
     assert(value2 !== store.random2)
     assert(value3 !== store.random3)
+    store.clearInterval()
+  })
+  it('register async', async () => {
+    const store = simpleExpireStore({}, 500)
+    let count = 0
+    const asyncValue = store.register('random', async () => {
+      const v = Math.floor(Math.random() * 10000)
+      assert(v > 5000)
+      await sleep(10)
+      count += 1
+      return v
+    })
+    assert(count === 0)
+    assert(await asyncValue === await store.getAsync('random'))
+    assert(count === 1)
+    await sleep(600)
+    assert(count === 1)
+    const asyncValue1 = store.getAsync('random')
+    assert(store.origin().random.asyncValue === asyncValue1)
+    const asyncValue2 = store.getAsync('random')
+    assert(store.origin().random.asyncValue === asyncValue2)
+    const asyncValue3 = store.getAsync('random')
+    assert(store.origin().random.asyncValue === asyncValue3)
+    assert(await asyncValue !== await asyncValue1)
+    assert(await asyncValue1 === await asyncValue2)
+    assert(await asyncValue1 === await asyncValue2)
     store.clearInterval()
   })
 })
