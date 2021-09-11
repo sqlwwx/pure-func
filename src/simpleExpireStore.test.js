@@ -104,4 +104,34 @@ describe('simpleExpireStore', () => {
     assert(store.a === undefined)
     store.clearInterval()
   })
+  it('register', async () => {
+    const store = simpleExpireStore({}, 500)
+    const value1 = await store.register('random', async () => {
+      const v = Math.floor(Math.random() * 10000)
+      assert(v > 5000)
+      return v
+    })
+    const value2 = await store.register('random2', async () => {
+      const v = Math.floor(Math.random() * 10000)
+      assert(v > 5000)
+      return v
+    }, { retry: 10 })
+    const value3 = await store.register('random3', async () => {
+      const v = Math.floor(Math.random() * 10000)
+      assert(v > 5000)
+      return v
+    }, {})
+    assert(value1 === store.random)
+    assert(value2 === store.random2)
+    assert(value3 === store.random3)
+    await sleep(600)
+    await store.reload('random3', 10)
+    assert(value1 === store.random)
+    assert(value2 === store.random2)
+    assert(value3 !== store.random3)
+    await sleep(100)
+    assert(value1 !== store.random)
+    assert(value2 !== store.random2)
+    assert(value3 !== store.random3)
+  })
 })

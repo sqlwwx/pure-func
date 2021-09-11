@@ -15,19 +15,23 @@ const simpleExpireStore = (obj = {}, timeout = 1000, checkInterval = 60000) => {
   }, checkInterval)
   const proxy = new Proxy(obj, {
     get (target, name) {
-      const value = target[name]
+      const info = target[name]
       // no cache for function
-      if (value instanceof Function) {
-        return value
+      if (info instanceof Function) {
+        return info
       }
-      if (!isExpireValue(value)) {
+      if (!isExpireValue(info)) {
         return undefined
       }
-      if (value.expiredAt < Date.now()) {
+      const now = Date.now()
+      if (info.reloadAt && info.reloadAt < now) {
+        proxy.reload(name, 5, { now, info })
+      }
+      if (info.expiredAt < now) {
         Reflect.deleteProperty(target, name)
         return undefined
       }
-      return value.value
+      return info.value
     },
     set (target, prop, value) {
       if (isNoneValue(value)) {
@@ -53,6 +57,43 @@ const simpleExpireStore = (obj = {}, timeout = 1000, checkInterval = 60000) => {
         clearInterval(interval)
       }
     },
+    register: {
+      async value (name, loadFn, options = {}) {
+        const { retry = 5 } = options
+        try {
+          const value = await loadFn()
+          // eslint-disable-next-line no-param-reassign
+          obj[name] = {
+            expiredAt: Number.MAX_SAFE_INTEGER,
+            reloadAt: Date.now() + timeout,
+            loadFn,
+            value
+          }
+          return value
+        } catch (e) {
+          if (retry > 0) {
+            return proxy.register(name, loadFn, { retry: retry - 1 })
+          }
+          throw e
+        }
+      }
+    },
+    reload: {
+      async value (name, count = 1, options = {}) {
+        const { now = Date.now(), info = obj[name] } = options
+        try {
+          info.reloadAt = now + timeout
+          info.value = await info.loadFn()
+        } catch (err) {
+          if (count <= 0) {
+            err.message += JSON.stringify({ name, count, options })
+            throw err
+          }
+          await proxy.reload(name, count - 1)
+        }
+        return info.value
+      }
+    },
     getAsync: {
       // eslint-disable-next-line consistent-return
       value (name, fn, options = {}) {
@@ -62,6 +103,11 @@ const simpleExpireStore = (obj = {}, timeout = 1000, checkInterval = 60000) => {
           if (info.expiredAt > now) {
             if (options.keepExpire) {
               info.expiredAt = now + options.keepExpire
+              if (fn) {
+                fn().then(value => {
+                  info.value = value
+                })
+              }
             }
             return info.value
           }
