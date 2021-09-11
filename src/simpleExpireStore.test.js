@@ -133,5 +133,6 @@ describe('simpleExpireStore', () => {
     assert(value1 !== store.random)
     assert(value2 !== store.random2)
     assert(value3 !== store.random3)
+    store.clearInterval()
   })
 })
