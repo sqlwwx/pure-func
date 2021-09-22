@@ -5,7 +5,7 @@ const { sleep } = require('./promise')
 
 axios.defaults.adapter = adapterHttp
 
-const missingFinderPatternsUrl = 'http://github-x.oss-cn-hangzhou.aliyuncs.com/missing-finder-patterns.png'
+const missingFinderPatternsUrl = 'https://github-x.oss-cn-hangzhou.aliyuncs.com/missing-finder-patterns.png'
 
 jest.setTimeout(1000 * 60 * 5)
 
