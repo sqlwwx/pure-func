@@ -16,7 +16,7 @@ watch:
 	$(BABEL) -w src -d . --copy-files
 
 lint:
-	$(LINT) --format $(FORMATTER) --fix src/*.js
+	$(LINT) --format $(FORMATTER) --cache --fix src/*.js
 
 test: lint
 	dd if=/dev/zero of=/tmp/qetag_100 bs=1M count=100
