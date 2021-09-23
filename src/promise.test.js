@@ -46,16 +46,16 @@ describe('promise', () => {
     let now
     await doWhile(async () => {
       now = new Date()
-      await sleep(1000)
+      await sleep(100)
       j += 1
       return Promise.resolve(j)
     }, val => val < 10, async val => {
       count += 1
-      await sleep(1000)
+      await sleep(100)
       expect(val).toBeLessThanOrEqual(10)
       const diff = Date.now() - now
-      expect(diff).toBeGreaterThanOrEqual(2000)
-      expect(diff).toBeLessThan(3000)
+      expect(diff).toBeGreaterThanOrEqual(200)
+      expect(diff).toBeLessThan(300)
     })
     expect(j).toEqual(10)
     expect(count).toEqual(10)
