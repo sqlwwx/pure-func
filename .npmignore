@@ -15,4 +15,6 @@ babel.config.js
 .huskyrc.js
 .github/
 .pnpm-debug.log
-yarn-err.log
+yarn-error.log
+jest.config.js
+pnpm-lock.yaml
