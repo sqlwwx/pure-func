@@ -14,3 +14,5 @@ lint-staged.config.js
 babel.config.js
 .huskyrc.js
 .github/
+.pnpm-debug.log
+yarn-err.log
