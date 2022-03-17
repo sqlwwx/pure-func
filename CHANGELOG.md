@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.3.4](https://github.com/sqlwwx/pure-func/compare/v3.3.3...v3.3.4) (2022-03-17)
+
+
+### Bug Fixes
+
+* simpleStore options keepExpire ([e14d956](https://github.com/sqlwwx/pure-func/commit/e14d9566c502d4c17f9910a94fc50d7acccf264c))
+
 ### [3.3.3](https://github.com/sqlwwx/pure-func/compare/v3.3.2...v3.3.3) (2021-11-09)
 
 ### [3.3.2](https://github.com/sqlwwx/pure-func/compare/v3.3.1...v3.3.2) (2021-11-09)
