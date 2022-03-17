@@ -111,11 +111,6 @@ const simpleExpireStore = (obj = {}, timeout = 1000, checkInterval = 60000) => {
             }
             if (options.keepExpire) {
               info.expiredAt = now + options.keepExpire
-              if (fn) {
-                fn().then(value => {
-                  info.value = value
-                })
-              }
             }
             return info.value
           }
