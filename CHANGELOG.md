@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.3.5](https://github.com/sqlwwx/pure-func/compare/v3.3.4...v3.3.5) (2022-03-31)
+
+
+### Bug Fixes
+
+* getAsync ([8561323](https://github.com/sqlwwx/pure-func/commit/85613232890a798849fa8a8ddab2216d475af7ee))
+
 ### [3.3.4](https://github.com/sqlwwx/pure-func/compare/v3.3.3...v3.3.4) (2022-03-17)
 
 
