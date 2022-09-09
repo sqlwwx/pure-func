@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.3.6](https://github.com/sqlwwx/pure-func/compare/v3.3.5...v3.3.6) (2022-09-09)
+
+
+### Features
+
+* **command:** support onError ([bb79c34](https://github.com/sqlwwx/pure-func/commit/bb79c34fa409829966a14cef46d3b74206785539))
+
 ### [3.3.5](https://github.com/sqlwwx/pure-func/compare/v3.3.4...v3.3.5) (2022-03-31)
 
 
