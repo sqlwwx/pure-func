@@ -10,7 +10,7 @@ export class ExecCommandError extends Error {
 }
 
 export const execCommand = (command, options = {}) => {
-  const { onData, ...execOptions } = options
+  const { onData, onError, ...execOptions } = options
   return new Promise((resolve, reject) => {
     let results = ''
     let errorStr = ''
@@ -34,6 +34,9 @@ export const execCommand = (command, options = {}) => {
       }
     })
     childProcess.stderr.on('data', data => {
+      if (onError) {
+        onError(data, command)
+      }
       errorStr += data
     })
   })
