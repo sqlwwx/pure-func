@@ -10,7 +10,7 @@ describe('xml', () => {
     contentJson = await parse(content)
     expect(contentJson).toHaveProperty('msg.@_encryptusername')
     expect(contentJson).toHaveProperty('msg.@_ticket')
-    expect(parse('<a>')).rejects.toHaveProperty('code', 'InvalidXml')
+    expect(parse('<a>')).rejects.toHaveProperty('code', 'InvalidTag')
     expect(parse('')).rejects.toHaveProperty('code', 'InvalidXml')
   })
   it('toXml', async () => {

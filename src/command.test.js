@@ -6,9 +6,9 @@ jest.setTimeout(1000 * 30)
 /* eslint-env jest */
 describe('command', () => {
   describe('execCommand', () => {
-    it('ls', async () => {
-      const ret = await execCommand('ls')
-      assert(ret.includes('command.test.js'))
+    it('default dir', async () => {
+      const ret = await execCommand('pwd')
+      assert(ret.trim() === process.cwd())
     })
     it.skip('ls with pwd', async () => {
       const ret = await execCommand('ls', {
@@ -20,6 +20,7 @@ describe('command', () => {
     it('onData', async () => {
       let onDataString = ''
       const ret = await execCommand('ls', {
+        cwd: __dirname,
         onData (data) {
           onDataString += data
         }
@@ -28,15 +29,13 @@ describe('command', () => {
       assert(ret === '')
     })
     it('test error', async () => {
-      await assert.rejects(
-        async () => {
-          return execCommand('ls notExistDir')
-        }, {
-          name: 'ExecCommandError',
-          message: /notExistDir/,
-          exitSignal: null
-        }
-      )
+      await assert.rejects(async () => {
+        return execCommand('ls notExistDir')
+      }, {
+        name: 'ExecCommandError',
+        message: /notExistDir/,
+        exitSignal: null
+      })
     })
   })
 })

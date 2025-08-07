@@ -92,9 +92,7 @@ export const div = (...nums) => {
 
 export const round = (num, fraction = 0) => {
   const base = 10 ** fraction
-  return div(
-    Math.round(
-      mul(num, base)
-    ), base
-  )
+  return div(Math.round(
+    mul(num, base)
+  ), base)
 }

@@ -27,9 +27,7 @@ const updateData = (hash, data, encoding = 'utf8') => {
 }
 
 export const hash = (data = '', method = 'md5', format = 'hex') => {
-  return updateData(
-    crypto.createHash(method), data
-  ).digest(format)
+  return updateData(crypto.createHash(method), data).digest(format)
 }
 
 export function hmac (key, data, algorithm = 'sha256', format = 'hex') {

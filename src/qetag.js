@@ -47,7 +47,8 @@ export const getEtag = buffer => {
         for (let i = 0; i < blockCount; i += 1) {
           sha1String.push(hash(
             checkedBuffer.slice(i * blockSize, (i + 1) * blockSize),
-            'sha1', null
+            'sha1',
+            null
           ))
         }
         process.nextTick(() => {

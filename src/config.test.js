@@ -15,7 +15,7 @@ describe('config', () => {
       }
       expect(
         requireErrorJson
-      ).toThrowError('Unexpected token')
+      ).toThrow('Unexpected token')
     })
   })
   describe('loadConfig', () => {

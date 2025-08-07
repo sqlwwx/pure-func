@@ -1,5 +1,6 @@
 const util = require('util')
 const QRCode = require('qrcode')
+// eslint-disable-next-line import/no-unresolved
 const { FileBox } = require('file-box')
 const jsQR = require('jsqr')
 const Jimp = require('jimp')
