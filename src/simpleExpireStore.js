@@ -7,12 +7,15 @@ const isExpireValue = obj => Boolean(
 const isNoneValue = value => Boolean(value === undefined || value === null)
 
 const simpleExpireStore = (obj = {}, timeout = 1000, checkInterval = 60000) => {
-  const interval = setInterval(() => {
-    const now = Date.now()
-    Object.entries(obj).filter(([, { expiredAt }]) => expiredAt < now).forEach(([key]) => {
-      return Reflect.deleteProperty(obj, key)
-    })
-  }, checkInterval)
+  let interval
+  if (checkInterval) {
+    interval = setInterval(() => {
+      const now = Date.now()
+      Object.entries(obj).filter(([, { expiredAt }]) => expiredAt < now).forEach(([key]) => {
+        return Reflect.deleteProperty(obj, key)
+      })
+    }, checkInterval)
+  }
   const proxy = new Proxy(obj, {
     get (target, name) {
       const info = target[name]
@@ -100,6 +103,7 @@ const simpleExpireStore = (obj = {}, timeout = 1000, checkInterval = 60000) => {
       // eslint-disable-next-line consistent-return
       async value (name, fn, options = {}) {
         const info = obj[name]
+        const value = info ? info.value : undefined
         if (info) {
           const now = Date.now()
           if (info.expiredAt > now) {
@@ -116,11 +120,17 @@ const simpleExpireStore = (obj = {}, timeout = 1000, checkInterval = 60000) => {
           }
         }
         if (fn) {
-          this[name] = fn().catch(err => {
+          this[name] = Promise.resolve(fn()).catch(err => {
+            if (value !== undefined && checkInterval === 0) {
+              return value
+            }
             this[name] = undefined
             throw err
           })
           return this[name]
+        }
+        if (checkInterval === 0) {
+          return value
         }
       }
     }

@@ -63,20 +63,46 @@ describe('simpleExpireStore', () => {
     expect(await store.getAsync('test2')).toEqual('test2')
     await sleep(200)
     expect(await store.getAsync('test2')).toEqual(undefined)
-    assert(
-      (
-        await store.getAsync('testError', async () => {
-          throw new Error('testError')
-        }).catch(err => err)
-      ).message === 'testError'
-    )
+  })
+  it('getAsync lazy', async () => {
+    const source = {}
+    const store = simpleExpireStore(source, 200, 0)
+    let count = 0
+    const getValue = () => store.getAsync('test', async () => {
+      count += 1
+      if (count > 1) {
+        throw new Error('testError')
+      }
+      return 'test'
+    })
+
+    expect(await getValue()).toEqual('test')
+
+    expect(await store.getAsync('test')).toEqual('test')
+    await sleep(201)
+    expect(await store.getAsync('test')).toEqual('test')
+    expect(await store.getAsync('test', () => 2)).toEqual(2)
+  })
+  it('getAsync error', async () => {
+    const source = {}
+    const store = simpleExpireStore(source, 200, 2000)
+
+    const err = await store.getAsync('testError', async () => {
+      throw new Error('testError')
+    }).catch(e => e)
+
+    assert(err.message === 'testError')
+
     expect(await store.getAsync('testError')).toEqual(undefined)
+
     expect(await store.getAsync('testError', async () => {
       return 1
     })).toEqual(1)
+
     expect(await store.getAsync('testError', async () => {
       throw new Error('error')
     })).toEqual(1)
+
     store.clearInterval()
   })
   it('getAsync keepExpire', async () => {
