@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0](https://github.com/sqlwwx/pure-func/compare/v3.3.7...v4.0.0) (2025-09-10)
+
+
+### Features
+
+* simpleExporeStore 支持持久缓存 ([20b31eb](https://github.com/sqlwwx/pure-func/commit/20b31eb443770b63da98f60a3cc64d2b4c595c64))
+
 ### [3.3.7](https://github.com/sqlwwx/pure-func/compare/v3.3.6...v3.3.7) (2025-08-07)
 
 ### [3.3.6](https://github.com/sqlwwx/pure-func/compare/v3.3.5...v3.3.6) (2022-09-09)
